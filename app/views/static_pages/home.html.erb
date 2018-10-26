@@ -5,17 +5,18 @@
 <p>人気のコラ画像</p>
 <!-- <%= link_to 'Click', 'collas' %> -->
 
+<%= link_to 'Colla1', @collas.first %>
 <div class="favorite_collas">
   <div>
-    <img src="dummy1.jpg">
-    <br><a href="colla">魔法使い</a>
+    <%= image_tag("dummy1.jpg") %>
+    <%= link_to '魔法使い(Colla id=1)', @collas.first %>
   </div>
   <div>
-    <img src="dummy2.png">
+    <%= image_tag("dummy2.png") %>
     <br><a href="collas/show">落単</a>
   </div>
   <div>
-    <img src="dummy3.jpg">
+    <%= image_tag("dummy3.jpg") %>
     <br><a href="collas/show">鳳凰院凶真</a>
   </div>
 </div>
