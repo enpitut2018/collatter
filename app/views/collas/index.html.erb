@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Collas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Tag txt</th>
+      <th>Template</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collas.each do |colla| %>
+      <tr>
+        <td><%= colla.image %></td>
+        <td><%= colla.tag_txt %></td>
+        <td><%= colla.template_id %></td>
+        <td><%= link_to 'Show', colla %></td>
+        <td><%= link_to 'Edit', edit_colla_path(colla) %></td>
+        <td><%= link_to 'Destroy', colla, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Colla', new_colla_path %>
+<br>
+<%= link_to 'Back', :back %>

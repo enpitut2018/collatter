@@ -1,0 +1,2 @@
+module CollasHelper
+end

@@ -5,9 +5,8 @@ class StaticPagesController < ApplicationController
   def about
   end
 
-  def dummy_edit_template
+  def collas
   end
 
-  def dummy_edit_colla
-  end
+
 end

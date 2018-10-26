@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @colla.image %>
+</p>
+
+<p>
+  <strong>Tag txt:</strong>
+  <%= @colla.tag_txt %>
+</p>
+
+<p>
+  <strong>Template:</strong>
+  <%= @colla.template_id %>
+</p>
+
+<%= link_to 'Edit', edit_colla_path(@colla) %> |
+<%= link_to 'Back', collas_path %>

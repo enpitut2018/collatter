@@ -1,0 +1,32 @@
+<%= form_with(model: colla, local: true) do |form| %>
+  <% if colla.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(colla.errors.count, "error") %> prohibited this colla from being saved:</h2>
+
+      <ul>
+      <% colla.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image, id: :colla_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag_txt %>
+    <%= form.text_field :tag_txt, id: :colla_tag_txt %>
+  </div>
+
+  <div class="field">
+    <%= form.label :template_id %>
+    <%= form.number_field :template_id, id: :colla_template_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
