@@ -2,8 +2,24 @@
 
 <p>検索欄がここに入る</p>
 
-<p>人気のコラテンプレがここに表示される</p>
-<%= link_to 'Edit', 'static_pages/dummy_edit_template' %>
+<p>人気のコラ画像</p>
+<!-- <%= link_to 'Click', 'collas' %> -->
 
-<p>人気のコラがここに表示される</p>
-<%= link_to 'Edit', 'static_pages/dummy_edit_colla' %>
+<%= link_to 'Colla1', @collas.first %>
+<div class="favorite_collas">
+  <div>
+    <%= image_tag("dummy1.jpg") %>
+    <%= link_to '魔法使い(Colla id=1)', @collas.first %>
+  </div>
+  <div>
+    <%= image_tag("dummy2.png") %>
+    <br><a href="collas/show">落単</a>
+  </div>
+  <div>
+    <%= image_tag("dummy3.jpg") %>
+    <br><a href="collas/show">鳳凰院凶真</a>
+  </div>
+</div>
+
+<p>コラ画像を新しく作る</p>
+<%= link_to 'Click', 'templates' %>

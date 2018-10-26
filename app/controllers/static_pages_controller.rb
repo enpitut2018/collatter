@@ -1,13 +1,14 @@
 class StaticPagesController < ApplicationController
   def home
+    @collas = Colla.all
+    @colla = Colla.first
   end
 
   def about
   end
 
-  def dummy_edit_template
+  def collas
   end
 
-  def dummy_edit_colla
-  end
+
 end
