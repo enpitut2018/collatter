@@ -3,9 +3,9 @@
 one:
   image: MyString
   tag_txt: MyString
-  template_id: 1
+  template: one
 
 two:
   image: MyString
   tag_txt: MyString
-  template_id: 1
+  template: two

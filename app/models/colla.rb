@@ -1,4 +1,3 @@
 class Colla < ApplicationRecord
-  belongs_to:template
-  validates:content, length:{minimum:0, maximun:10}
+  belongs_to :template
 end

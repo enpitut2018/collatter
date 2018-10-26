@@ -17,7 +17,7 @@
       <tr>
         <td><%= colla.image %></td>
         <td><%= colla.tag_txt %></td>
-        <td><%= colla.template_id %></td>
+        <td><%= colla.template %></td>
         <td><%= link_to 'Show', colla %></td>
         <td><%= link_to 'Edit', edit_colla_path(colla) %></td>
         <td><%= link_to 'Destroy', colla, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,6 +27,5 @@
 </table>
 
 <br>
+
 <%= link_to 'New Colla', new_colla_path %>
-<br>
-<%= link_to 'Back', :back %>
