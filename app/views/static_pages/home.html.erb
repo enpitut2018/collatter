@@ -1,19 +1,23 @@
-<h1>Collatter</h1>
-
-<p>検索欄がここに入る</p>
+<header>
+  <h1>Collatter</h1>
+</header>
+<h2><%= link_to 'Collatterとは', 'about' %></h2>
+</div>
+<form id="form1" action="自分のサイトURL" method="get">
+<input id="sbox1" id="s" name="s" type="search" placeholder="キーワードを入力" />
+<input id="sbtn1" type="submit" value="検索" /></form>
 
 <p>人気のコラ画像</p>
 <!-- <%= link_to 'Click', 'collas' %> -->
 
-<%= link_to 'Colla1', @collas.first %>
 <div class="favorite_collas">
   <div>
     <%= image_tag("dummy1.jpg") %>
-    <%= link_to '魔法使い(Colla id=1)', @collas.first %>
+    <br><%= link_to '魔法使い', @collas.first %>
   </div>
   <div>
     <%= image_tag("dummy2.png") %>
-    <br><a href="collas/show">落単</a>
+    <br><%= link_to '単位', @collas.first %>
   </div>
   <div>
     <%= image_tag("dummy3.jpg") %>
