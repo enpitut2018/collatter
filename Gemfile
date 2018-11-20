@@ -5,6 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Custom gems
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'dotenv-rails' #環境変数を簡単に利用できるgem
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
