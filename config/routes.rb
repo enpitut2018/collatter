@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+
   get 'user/show'
 
   get 'user/index'
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
   get 'user/edit'
 
   #このpathを通して認証が行われる。
-  get 'auth/:provider/callback' => 'users#create'
+  get 'auth/:provider/callback' => 'sessions#create'
 
   resources :collas
   resources :templates

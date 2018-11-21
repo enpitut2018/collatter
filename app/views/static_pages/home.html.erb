@@ -1,5 +1,11 @@
 <h1>Collatter</h1>
 <%= link_to 'Twitterでログイン', '/auth/twitter' %>
+<% if logged_in? %>
+  ログインしています
+<% else %>
+  ログインしてください
+<% end %>
+
 
 <p>検索欄がここに入る</p>
 
