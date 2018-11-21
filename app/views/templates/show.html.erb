@@ -4,7 +4,9 @@
   <strong>Image:</strong>
   <%= @template.image %>
 </p>
-
+<p>
+  <%= image_tag @template.image.to_s %>
+</p>
 <p>
   <strong>Tag txt:</strong>
   <%= @template.tag_txt %>
