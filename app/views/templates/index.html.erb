@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Templates</h1>
+<h1>テンプレート一覧</h1>
 
 <table>
   <thead>
@@ -14,7 +14,7 @@
   <tbody>
     <% @templates.each do |template| %>
       <tr>
-        <td><%= template.image %></td>
+        <td><%= image_tag template.image.to_s %></td>
         <td><%= template.tag_txt %></td>
         <td><%= link_to 'Show', template %></td>
         <td><%= link_to 'Edit', edit_template_path(template) %></td>
