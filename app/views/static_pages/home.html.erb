@@ -15,7 +15,7 @@
 <div class="favorite_collas">
   <div>
     <%= image_tag("dummy1.jpg") %>
-    <%= link_to '魔法使い', @collas.first %>
+    <br><%= link_to '魔法使い', @collas.first %>
   </div>
   <div>
     <%= image_tag("dummy2.png") %>
@@ -26,6 +26,25 @@
     <br><a href="collas/show">鳳凰院凶真</a>
   </div>
 </div>
+
+<p>人気のテンプレート画像</p>
+<!-- <%= link_to 'Click', 'collas' %> -->
+
+<div class="favorite_collas">
+  <div>
+    <%= image_tag("dummy1.jpg") %>
+    <br><%= link_to '魔法使い', @collas.first %>
+  </div>
+  <div>
+    <%= image_tag("dummy2.png") %>
+    <br><a href="collas/show">落単</a>
+  </div>
+  <div>
+    <%= image_tag("dummy3.jpg") %>
+    <br><a href="collas/show">鳳凰院凶真</a>
+  </div>
+</div>
+
 <%= link_to 'コラ画像一覧', 'collas' %>
 <%= link_to 'テンプレート一覧', 'templates' %>
 
