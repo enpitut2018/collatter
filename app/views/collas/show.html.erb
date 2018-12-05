@@ -18,5 +18,9 @@
   <%= @colla.template %>
 </p>
 
+<%= form_with url: '/twitter_post' do |f| %>
+  <%= f.submit %>
+<% end %>
+
 <%= link_to 'Edit', edit_colla_path(@colla) %> |
 <%= link_to 'Back', collas_path %>
