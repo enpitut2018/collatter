@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181120071832) do
+ActiveRecord::Schema.define(version: 20181205045853) do
 
   create_table "collas", force: :cascade do |t|
     t.string "image"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20181120071832) do
     t.string "uid"
     t.string "username"
     t.string "image_url"
+    t.string "token"
+    t.string "token_secret"
   end
 
 end

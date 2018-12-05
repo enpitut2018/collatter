@@ -12,11 +12,22 @@ class User < ApplicationRecord
    uid = auth_hash[:uid]
    name = auth_hash[:info][:name]
    image_url = auth_hash[:info][:image]
+   token = auth_hash[:credentials][:token]
+   token_secret = auth_hash[:credentials][:secret]
 
    #find_or_create_by()は()の中の条件のものが見つければ取得し、なければ新しく作成するというメソッド
-   self.find_or_create_by(provider: provider,uid: uid) do |user|
+   user = self.find_or_create_by(provider: provider,uid: uid) do |user|
      user.username = name
      user.image_url = image_url
+     user.token = token
+     user.token_secret = token_secret
    end
+   user.update_attributes({
+     username: name,
+     image_url: image_url,
+     token: token,
+     token_secret: token_secret,
+   })
+   return user
   end
 end
