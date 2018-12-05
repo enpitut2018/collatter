@@ -1,11 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<!-- Dummy img -->
-<%= image_tag("dummy1.jpg") %>
 
 <p>
   <strong>Image:</strong>
-  <%= @colla.image %>
+  <%= image_tag @colla.image.to_s %>
 </p>
 
 <p>
