@@ -19,7 +19,7 @@
 </p>
 
 <%= form_with url: '/twitter_post' do |f| %>
-  <%= f.text_area :content %>
+  <%= f.text_area :content, value: "Tweeted from #{request.url}" %>
   <%= f.submit '画像とともにツイート' %>
 <% end %>
 
