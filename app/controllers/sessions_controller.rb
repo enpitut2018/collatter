@@ -42,7 +42,7 @@ class SessionsController < ApplicationController
 
   # Twitterアカウントで投稿
   def twitter_post
-    @client.update("test")
+    @client.update(params['content'])
     redirect_to root_path, notice: "ツイートしました．"
   end
 
