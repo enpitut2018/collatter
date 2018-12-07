@@ -9,23 +9,19 @@
 
 <p>検索欄がここに入る</p>
 
-<p>人気のコラ画像</p>
-<!-- <%= link_to 'Click', 'collas' %> -->
+<p>最新のコラ画像</p>
 
 <div class="favorite_collas">
-  <div>
-    <%= image_tag("dummy1.jpg") %>
-    <br><%= link_to '魔法使い', @collas.first %>
-  </div>
-  <div>
-    <%= image_tag("dummy2.png") %>
-    <br><a href="collas/show">落単</a>
-  </div>
-  <div>
-    <%= image_tag("dummy3.jpg") %>
-    <br><a href="collas/show">鳳凰院凶真</a>
-  </div>
+<% @collas.each do |colla| %>
+<div>
+  <%= link_to colla, target: "_brank" do %>
+    <%= image_tag colla.image.to_s %>
+    <br><%= colla.tag_txt %>
+  <% end %>
 </div>
+<% end %>
+</div>
+
 <%= link_to 'コラ画像一覧', 'collas' %>
 <%= link_to 'テンプレート一覧', 'templates' %>
 
