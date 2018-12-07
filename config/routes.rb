@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  post '/twitter_post', to: 'sessions#twitter_post'
+
   get 'user/show'
 
   get 'user/index'

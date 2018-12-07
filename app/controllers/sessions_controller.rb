@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :twitter_client, only: [:twitter_post]
+
   def new
   end
 
@@ -36,5 +38,21 @@ class SessionsController < ApplicationController
   def destroy
     log_out if logged_in?
     redirect_to root_url
+  end
+
+  # Twitterアカウントで投稿
+  def twitter_post
+    @client.update(params['content'])
+    redirect_to root_path, notice: "ツイートしました．"
+  end
+
+  private
+  def twitter_client
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key = ENV["TWITTER_CONSUMER_KEY"]
+      config.consumer_secret = ENV["TWITTER_CONSUMER_SECRET"]
+      config.access_token = current_user.token
+      config.access_token_secret = current_user.token_secret
+    end
   end
 end

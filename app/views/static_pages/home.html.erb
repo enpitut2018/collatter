@@ -2,6 +2,7 @@
 <%= link_to 'Twitterでログイン', '/auth/twitter' %>
 <% if logged_in? %>
   ログインしています
+  <%= current_user.username %>
 <% else %>
   ログインしてください
 <% end %>

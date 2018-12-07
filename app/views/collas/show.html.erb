@@ -16,5 +16,10 @@
   <%= @colla.template %>
 </p>
 
+<%= form_with url: '/twitter_post' do |f| %>
+  <%= f.text_area :content, value: "Tweeted from #{request.url}" %>
+  <%= f.submit '画像とともにツイート' %>
+<% end %>
+
 <%= link_to 'Edit', edit_colla_path(@colla) %> |
 <%= link_to 'Back', collas_path %>
