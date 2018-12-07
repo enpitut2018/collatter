@@ -1,3 +1,21 @@
 // Place all the styles related to the collas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.collas img{
+    display: inline-block;
+    background-color: #ccc;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 5px;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #ccc;
+    background-size: contain;
+  }
+
+  .collas{
+	margin-bottom: 20px;
+	display: -webkit-flex;
+	display: flex;
+}

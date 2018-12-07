@@ -1,3 +1,22 @@
 // Place all the styles related to the Templates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.template img{
+    display: inline-block;
+    background-color: #ccc;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 5px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    background-size: contain;
+  }
+  
+  .template{
+      margin-bottom: 20px;
+      display: -webkit-flex;
+      display: flex;
+  }
