@@ -10,6 +10,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'twitter'
 gem 'dotenv-rails' #環境変数を簡単に利用できるgem
+gem 'awesome_rails_console'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
