@@ -47,9 +47,11 @@ class SessionsController < ApplicationController
   end
 
   def twitter_post_media
+    colla = Colla.find(params['colla'])
     images = []
-    images << File.new(params['colla'])
+    images << File.new(Rails.public_path.to_s + colla.image.to_s)
     @client.update_with_media(params['content'], images)
+    colla.tweet_count_plus1
     redirect_to :back, notice: "ツイートしました"  # redirect_to :back doesn't work
   end
 

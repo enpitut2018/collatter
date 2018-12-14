@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181205045853) do
+ActiveRecord::Schema.define(version: 20181214065448) do
 
   create_table "collas", force: :cascade do |t|
     t.string "image"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20181205045853) do
     t.integer "template_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "tweet_count", default: 0
     t.index ["template_id"], name: "index_collas_on_template_id"
   end
 
