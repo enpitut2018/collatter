@@ -4,7 +4,7 @@ class CollasController < ApplicationController
   # GET /collas
   # GET /collas.json
   def index
-    @collas = Colla.all
+    @collas = Colla.order("tweet_count DESC").all
   end
 
   # GET /collas/1
