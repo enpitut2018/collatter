@@ -8,14 +8,17 @@
     background-position: center center;
     background-repeat: no-repeat;
     margin: 5px;
-    width: 200px;
-    height: 200px;
     border: 1px solid #ccc;
     background-size: contain;
+    display: inline-block; 
+    height: 200px;
+    margin-right: 15px;
+    margin-bottom: 15px;
   }
 
   .collas{
 	margin-bottom: 20px;
 	display: -webkit-flex;
-	display: flex;
+  display: flex;
+  height: 100%;
 }

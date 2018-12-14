@@ -1,13 +1,7 @@
-<h1>Collatter</h1>
-<% if logged_in? %>
-  <%= image_tag current_user.image_url.to_s %>
-  <br><%= current_user.username %>
-<% else %>
-  <%= link_to 'Twitterでログイン', '/auth/twitter' %>
-  ログインしてください
-<% end %>
 
-<p>最新のコラ画像</p>
+
+
+<h1>最新のコラ画像</h1>
 
 <div class="favorite_collas">
 <% @collas.each do |colla| %>
