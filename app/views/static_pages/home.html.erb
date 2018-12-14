@@ -1,5 +1,4 @@
 <h1>人気のコラ画像</h1>
-=======
 <%= link_to 'Collatterの使い方', 'static_pages/about' %>
 
 <p>人気のコラ画像</p>
@@ -10,6 +9,7 @@
   <%= link_to colla, target: "_brank" do %>
     <%= image_tag colla.image.to_s %>
     <br><%= colla.tag_txt %>
+    <div>人気：<%= colla.popularity %></div>
   <% end %>
 </div>
 <% end %>
