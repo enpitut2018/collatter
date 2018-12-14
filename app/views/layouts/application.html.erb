@@ -3,12 +3,26 @@
   <head>
     <title>Colatter</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="logo">
+      <%= link_to root_path, target: "_brank" do %>
+        <%= image_tag '/collatter.png' %>
+      <% end %>
+    </div>
+
+    <% if logged_in? %>
+      <%= image_tag current_user.image_url.to_s %>
+      <br><%= current_user.username %>
+    <% else %>
+       <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
+    <% end %>
+
+    <div class="all">
+      <%= yield %>
+    </div>
   </body>
 </html>

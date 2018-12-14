@@ -2,17 +2,16 @@
 
 
 <p>
-  <strong>Image:</strong>
   <%= image_tag @colla.image.to_s %>
 </p>
 
 <p>
-  <strong>Tag txt:</strong>
+  <strong>タグ:</strong>
   <%= @colla.tag_txt %>
 </p>
 
 <p>
-  <strong>Template:</strong>
+  <strong>元のテンプレート画像：</strong>
   <%= @colla.template %>
 </p>
 
@@ -22,5 +21,4 @@
   <%= f.submit '画像とともにツイート' %>
 <% end %>
 
-<%= link_to 'Edit', edit_colla_path(@colla) %> |
-<%= link_to 'Back', collas_path %>
+<%= link_to '戻る', collas_path %>
