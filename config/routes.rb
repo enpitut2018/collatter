@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   post '/twitter_post', to: 'sessions#twitter_post'
+  post '/twitter_post_media', to: 'sessions#twitter_post_media'
 
   get 'user/show'
 
