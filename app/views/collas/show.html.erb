@@ -18,7 +18,7 @@
 
 <%= form_with url: '/twitter_post_media' do |f| %>
   <%= f.text_area :content, value: "Tweeted from #{request.url}" %>
-  <%= f.hidden_field :colla, value: Rails.public_path.to_s + @colla.image.to_s %>
+  <%= f.hidden_field :colla, value: @colla.id %>
   <%= f.submit '画像とともにツイート' %>
 <% end %>
 
