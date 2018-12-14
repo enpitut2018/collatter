@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @collas = Colla.order("tweet_count DESC").all
+    @collas = Colla.all_by_popularity
     @colla = Colla.first
   end
 
