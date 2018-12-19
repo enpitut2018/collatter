@@ -14,13 +14,15 @@
       <% end %>
     </div>
 
+    <div class="twitter">
     <% if logged_in? %>
       <%= image_tag current_user.image_url.to_s %>
       <br><%= current_user.username %>
     <% else %>
        <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
     <% end %>
-
+    </div>
+    
     <div class="all">
       <%= yield %>
     </div>

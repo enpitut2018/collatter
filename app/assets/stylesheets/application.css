@@ -29,8 +29,16 @@
 
 .logo{
   text-align: center;
+  position: relative;
+  top: 20px;
 }
 
 .all{
   text-align: center;
+}
+
+.twitter{
+  text-align: center;
+  position: relative;
+  top: 15px;
 }
