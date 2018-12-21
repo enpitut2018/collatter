@@ -18,6 +18,7 @@
     <% if logged_in? %>
       <%= image_tag current_user.image_url.to_s %>
       <br><%= current_user.username %>
+      <%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
     <% else %>
        <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
     <% end %>

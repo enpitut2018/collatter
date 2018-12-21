@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
     if user
       log_in user
       # remember(user) ?
-      redirect_to root_path, notice: "ログインしました。"
+      redirect_back fallback_location: root_path, notice: "ログインしました。"
     else
-      redirect_to root_path, notice: "失敗しました。"
+      redirect_back fallback_location: root_path, notice: "失敗しました。"
     end
   end
 
@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
   # Twitterアカウントで投稿
   def twitter_post
     @client.update(params['content'])
-    redirect_to root_path, notice: "ツイートしました．"
+    redirect_back fallback_location: root_path, notice: "ツイートしました"
   end
 
   def twitter_post_media
@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
     images << File.new(Rails.public_path.to_s + colla.image.to_s)
     @client.update_with_media(params['content'], images)
     colla.tweet_count_plus1
-    redirect_to :back, notice: "ツイートしました"  # redirect_to :back doesn't work
+    redirect_back fallback_location: root_path, notice: "ツイートしました"
   end
 
   private
