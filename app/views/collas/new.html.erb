@@ -8,19 +8,40 @@
 
    <body>
 
-        <h1>新しいコラ画像を追加する</h1>
+        <h2>元の画像をアップロードしてください</h2>
         <form id="my_form">
            <input id="ufile" name="ufile" type="file" accept="image/jpeg,image/png"><br>
         </form>
+        
+        <h3>入れたい文字を入力してください</h3>
 
-        <div>
+        <form name="js">
+            <textarea name="text" rows="1"/></textarea><br>
+            <h3>文字を入れたい場所をクリックしてください</h3>
+            <div id="address"></div><br>
+            <div>
             <canvas id="cnvs"></canvas><br>
-            <form name="js">
-                <textarea name="text" rows="3"/></textarea><br>
-                <input type="button" value="作成" onclick="OnButtonClick();"/><br />
-            </form>
-            <div id="address">うんこ</div>
-        </div>
+            </div>
+            <input type="button" value="文字を追加する" onclick="OnButtonClick();"/><br />
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <%= render 'form', colla: @colla %>
+
+
+        
 
         <script>
         $(function(){
