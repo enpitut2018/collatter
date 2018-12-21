@@ -59,7 +59,7 @@ function OnButtonClick(){
   // (1) HTMLのCanvas要素の取得
   var canvas = $("#cnvs");
   // テキストボックスの文字を取得する
-  var colla_text = $('#colla-text').value;
+  var colla_text = $('#colla-text').val();
   //var colla_x = colla_x.value;
   //var colla_y = colla_y.value;
   // (2) getContext()メソッドで描画機能を有効にする
