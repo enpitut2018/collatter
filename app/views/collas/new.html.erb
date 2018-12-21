@@ -17,8 +17,6 @@
             <canvas id="cnvs"></canvas><br>
             <form name="js">
                 <textarea name="text" rows="3"/></textarea><br>
-                <input type="text" name="form_x"/>
-                <input type="text" name="form_y"/>
                 <input type="button" value="作成" onclick="OnButtonClick();"/><br />
             </form>
             <div id="address">うんこ</div>
@@ -73,27 +71,33 @@
        })
 
        //canvas内での座標をクリックで取得して、テキストの表示位置に代入したい
-        document.getElementById( "cnvs" ).addEventListener( "click", function( event ) {
+        document.getElementById("cnvs").addEventListener("click", function(event) {
             var clickX = event.pageX ;
             var clickY = event.pageY ;
-            document.getElementById("address").innerText = "x = " + x + ", y = " + y;
+            
         // 要素の位置を取得
             var clientRect = this.getBoundingClientRect() ;
             var positionX = clientRect.left + window.pageXOffset ;
             var positionY = clientRect.top + window.pageYOffset ;
 
         // 要素内におけるクリック位置を計算
-            var x = clickX - positionX ;
-            var y = clickY - positionY ;
+            colla_x = clickX - positionX ;
+            colla_y = clickY - positionY ;
+            document.getElementById("address").innerText = "x = " + colla_x + ", y = " + colla_y;
+            //var canvas = $("#cnvs");
+            //var ctx = canvas[0].getContext('2d');
+            //ctx.fillStyle = '#000000';
+            //ctx.clearRect(colla_x, colla_y, 30, 30);
         } )
+
 
        function OnButtonClick(){
             // (1) HTMLのCanvas要素の取得
             var canvas = $("#cnvs");
             // テキストボックスの文字を取得する
             var colla_text = document.js.text.value;
-            var colla_x = document.js.form_x.value;
-            var colla_y = document.js.form_y.value;
+            //var colla_x = colla_x.value;
+            //var colla_y = colla_y.value;
             // (2) getContext()メソッドで描画機能を有効にする
             var ctx = canvas[0].getContext('2d');
 
@@ -104,7 +108,7 @@
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillStyle = '#002B69';
-            ctx.fillText(colla_text, colla_x, colla_y);
+            ctx.fillText(colla_text, this.colla_x, this.colla_y);
        }
        
        </script>
