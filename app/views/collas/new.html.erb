@@ -21,6 +21,7 @@
                 <input type="text" name="form_y"/>
                 <input type="button" value="作成" onclick="OnButtonClick();"/><br />
             </form>
+            <div id="address">うんこ</div>
         </div>
 
         <script>
@@ -71,13 +72,21 @@
             })
        })
 
-       /*
-       function OnButtonClick(){
-           alert("onbuttonclick が呼び出されたよ");
-        target = document.getElementById("output");
-        target.innerHTML = "Penguin";
-       }
-        */
+       //canvas内での座標をクリックで取得して、テキストの表示位置に代入したい
+        document.getElementById( "cnvs" ).addEventListener( "click", function( event ) {
+            var clickX = event.pageX ;
+            var clickY = event.pageY ;
+            document.getElementById("address").innerText = "x = " + x + ", y = " + y;
+        // 要素の位置を取得
+            var clientRect = this.getBoundingClientRect() ;
+            var positionX = clientRect.left + window.pageXOffset ;
+            var positionY = clientRect.top + window.pageYOffset ;
+
+        // 要素内におけるクリック位置を計算
+            var x = clickX - positionX ;
+            var y = clickY - positionY ;
+        } )
+
        function OnButtonClick(){
             // (1) HTMLのCanvas要素の取得
             var canvas = $("#cnvs");
