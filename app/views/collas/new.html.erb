@@ -2,103 +2,49 @@
 <html lang="ja">
    <head>
        <meta charset="UTF-8">
-       <script src="http://code.jquery.com/jquery-latest.js" type="text/javascript"></script>
        <title>画像ファイルをCANVSでプレビュー</title>
    </head>
 
    <body>
 
         <h1>新しいコラ画像を追加する</h1>
-        <form id="my_form">
-           <input id="ufile" name="ufile" type="file" accept="image/jpeg,image/png"><br>
-        </form>
 
-        <div>
-            <canvas id="cnvs"></canvas><br>
-            <form name="js">
-                <textarea name="text" rows="3"/></textarea><br>
-                <input type="text" name="form_x"/>
-                <input type="text" name="form_y"/>
-                <input type="button" value="作成" onclick="OnButtonClick();"/><br />
-            </form>
-        </div>
+        <%= form_with(model: @colla, local: true) do |form| %>
+          <% if @colla.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@colla.errors.count, "error") %> prohibited this colla from being saved:</h2>
 
-        <script>
-        $(function(){
-            // id="ufile"の変化でコールバック
-            $("#ufile").change(function(){
-                // 選択ファイルの有無をチェック
-                if (!this.files.length) {
-                    alert('ファイルが選択されていません');
-                    return;
-                }
+              <ul>
+                <% @colla.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
 
-                // Formからファイルを取得
-                var file = this.files[0];
+          <div class="field">
+            <h3>元の画像をアップロードしてください</h3>
+            <%# form.label "元の画像をアップロードしてください" %>
+            <%= form.file_field :image, id: :colla_image %>
+          </div>
 
-                // (1) HTMLのCanvas要素の取得
-                var canvas = $("#cnvs");
+          <!-- Canvas -->
+          <div>
+              <form name="js">
+                <h3>入れたい文字を入力してください</h3>
+                  <textarea id="colla-text" name="text" rows="3"/></textarea><br>
+                  <h3>文字を入れたい場所をクリックしてください</h3>
+                  <canvas id="cnvs"></canvas><br>
+                  <input type="button" value="文字追加" onclick="OnButtonClick();"/><br />
+              </form>
+          </div>
 
-                // (2) getContext()メソッドで描画機能を有効にする
-                var ctx = canvas[0].getContext('2d');
+          <div class="actions">
+            <%= form.submit %>
+          </div>
+        <% end %>
 
-                // 描画イメージインスタンス化
-                var image = new Image();
 
-                // File API FileReader Objectでローカルファイルにアクセス
-                var fr = new FileReader();
-
-                // ファイル読み込み読み込み完了後に実行 [非同期処理]
-                fr.onload = function(evt) {
-
-                    // 画像がロードされた後にcanvasに描画を行う [非同期処理]
-                    image.onload = function() {
-                        // (3) プレビュー(Cnavas)のサイズを指定
-                        var cnvsH = 300;
-                        var cnvsW = image.naturalWidth*cnvsH/image.naturalHeight;
-                        // (4) Cnavasにサイズアトリビュートを設定する
-                        canvas.attr('width', cnvsW);
-                        canvas.attr('height', cnvsH);
-                        // (5) 描画
-                        ctx.drawImage(image, 0, 0, cnvsW, cnvsH);
-                    }
-                    // 読み込んだ画像をimageのソースに設定
-                    image.src = evt.target.result;
-                }
-
-                // fileを読み込む データはBase64エンコードされる
-                fr.readAsDataURL(file);
-            })
-       })
-
-       /*
-       function OnButtonClick(){
-           alert("onbuttonclick が呼び出されたよ");
-        target = document.getElementById("output");
-        target.innerHTML = "Penguin";
-       }
-        */
-       function OnButtonClick(){
-            // (1) HTMLのCanvas要素の取得
-            var canvas = $("#cnvs");
-            // テキストボックスの文字を取得する
-            var colla_text = document.js.text.value;
-            var colla_x = document.js.form_x.value;
-            var colla_y = document.js.form_y.value;
-            // (2) getContext()メソッドで描画機能を有効にする
-            var ctx = canvas[0].getContext('2d');
-
-            
-            ctx.fillStyle = '#00000000';
-            ctx.fillRect(100, 100, 140, 30);
-            ctx.font = "bold 20px 'MS Pゴシック'";
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillStyle = '#002B69';
-            ctx.fillText(colla_text, colla_x, colla_y);
-       }
-       
-       </script>
-       <%= link_to '戻る', collas_path %>
+        <%= link_to '戻る', collas_path %>
    </body>
 </html>
