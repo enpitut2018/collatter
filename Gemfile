@@ -11,6 +11,7 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'dotenv-rails' #環境変数を簡単に利用できるgem
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'awesome_rails_console'
 
 
