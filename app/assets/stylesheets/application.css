@@ -14,31 +14,100 @@
  *= require_self
  */
 
- body {
+ @media screen and (max-width:375px) {
+  /*スマホ用のcssを記述*/
+    body {
+      color: #2d3133;
+      background-color: #ffe4c4	;
+      margin: 0;
+      min-height: 1vh;
+    }
+
+  .logo img{
+      background-size: contain;
+      width: 80%;
+      height: 50%;
+    }
+
+  .logo{
+    text-align: center;
+    position: relative;
+    top: 20px;
+  }
+
+  .all{
+    text-align: center;
+  }
+
+  .twitter{
+    text-align: center;
+    position: relative;
+    top: 15px;
+  }
+
+}
+
+@media screen and (min-width:961px) {
+  /*pc用のcssを記述*/
+  body {
     color: #2d3133;
     background-color: #ffe4c4	;
     margin: 0;
     min-height: 1vh;
   }
 
-.logo img{
-    background-size: contain;
-    width: 20%;
-    height: 20%;
+  .logo img{
+      background-size: contain;
+      width: 20%;
+      height: 20%;
+    }
+
+  .logo{
+    text-align: center;
+    position: relative;
+    top: 20px;
   }
 
-.logo{
-  text-align: center;
-  position: relative;
-  top: 20px;
+  .all{
+    text-align: center;
+  }
+
+  .twitter{
+    text-align: center;
+    position: relative;
+    top: 15px;
+  }
 }
 
-.all{
-  text-align: center;
-}
+@media only screen and (min-width:376px) and (max-width:960px) {
+  /*tablet用のcssを記述*/
+  body {
+    color: #2d3133;
+    background-color: #ffe4c4	;
+    margin: 0;
+    min-height: 1vh;
+  }
 
-.twitter{
-  text-align: center;
-  position: relative;
-  top: 15px;
+  .logo img{
+      background-size: contain;
+      width: 20%;
+      height: 20%;
+    }
+
+  .logo{
+    text-align: center;
+    position: relative;
+    top: 20px;
+  }
+
+  .all{
+    text-align: center;
+  }
+
+  .twitter{
+    text-align: center;
+    position: relative;
+    top: 15px;
+  }
 }
+ 
