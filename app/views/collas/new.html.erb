@@ -36,7 +36,12 @@
             <canvas id="cnvs"></canvas><br>
             <input type="button" value="文字追加" onclick="OnButtonClick();"/><br />
           </div>
-
+          <br>
+          <div class="field">
+            <%= form.label :コラ画像のタグを入力してください %>
+            <%= form.text_field :tag_txt, id: :colla_tag_txt %>
+          </div>
+         
           <div class="actions">
             <%= form.submit %>
           </div>
