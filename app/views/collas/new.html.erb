@@ -6,7 +6,6 @@
    </head>
 
    <body>
-
         <h1>新しいコラ画像を追加する</h1>
 
         <%= form_with(model: @colla, local: true) do |form| %>
@@ -36,6 +35,7 @@
             <canvas id="cnvs"></canvas><br>
             <input type="button" value="文字追加" onclick="OnButtonClick();"/><br />
           </div>
+          <div id="address">取得した座標</div>
           <br>
           <div class="field">
             <%= form.label :コラ画像のタグを入力してください %>

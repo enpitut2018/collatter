@@ -1,3 +1,6 @@
+var mytap = window.ontouchstart===null?"touchstart":"click";
+document.write(mytap);
+
 $(function(){
   // id="colla_image"の変化でコールバック
   $("#colla_image").change(function(){
@@ -36,6 +39,8 @@ $(function(){
     fr.readAsDataURL(file);
   })
 })
+
+if(mytap == "click"){
 //canvas内での座標をクリックで取得して、テキストの表示位置に代入したい
 $(document).on('click', '#cnvs', function(event) {
   console.log('clicked canvas');
@@ -55,6 +60,25 @@ $(document).on('click', '#cnvs', function(event) {
   //ctx.fillStyle = '#000000';
   //ctx.clearRect(colla_x, colla_y, 30, 30);
 });
+} else {
+  // <div id="target">...</div>などの要素にタッチイベントを設定
+$(document).on('touchstart', '#cnvs', function( event ) {
+	var touchObject = event.originalEvent.changedTouches[0] ;
+	var touchX = touchObject.pageX ;
+	var touchY = touchObject.pageY ;
+
+	// 要素の位置を取得
+	var clientRect = this.getBoundingClientRect() ;
+	var positionX = clientRect.left + window.pageXOffset ;
+	var positionY = clientRect.top + window.pageYOffset ;
+
+	// 要素内におけるタッチ位置を計算
+	colla_x = touchX - positionX ;
+  colla_y = touchY - positionY ;
+  document.getElementById("address").innerText = "x = " + colla_x + ", y = " + colla_y;
+} ) ;
+  
+}
 function OnButtonClick(){
   // (1) HTMLのCanvas要素の取得
   var canvas = $("#cnvs");
