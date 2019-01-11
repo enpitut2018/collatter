@@ -2,30 +2,67 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
- header{
+@media screen and (min-width:481px) {
+  /*pc用のcssを記述*/
+  header{
     height: 30px;
     z-index: 1;
     width: 120%;
   }
 
-.favorite_collas img{
-  display: inline-block;
-  background-color: #ccc;
-  background-position: center center;
-  background-repeat: no-repeat;
-  margin: 5px;
-  border: 1px solid #ccc;
-  background-size: contain;
-  display: inline-block; 
-  height: 270px;
-  margin-right: 15px;
-  margin-bottom: 15px;
+  .favorite_collas img{
+    display: inline-block;
+    background-color: #ccc;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 5px;
+    border: 1px solid #ccc;
+    background-size: contain;
+    display: inline-block; 
+    height: 270px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+
+  .favorite_collas{
+    text-align: center;
+    margin-bottom: 20px;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}
+  
+   
+@media screen and (max-width:480px) {
+  /*スマホ用のcssを記述*/
+  header{
+    height: 30px;
+    z-index: 1;
+    width: 120%;
+  }
+
+  .favorite_collas img{
+    display: block;
+    background-color: #ccc;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    background-size: contain;
+    display: inline-block; 
+    width: 80%;
+    margin-right: 15px;
+    margin-bottom: 15px;
+  }
+
 }
 
-.favorite_collas{
-	margin-bottom: 20px;
-	display: -webkit-flex;
-  display: flex;
-  height: 100%;
-}
+ 
+
+
 
