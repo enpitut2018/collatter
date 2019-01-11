@@ -9,7 +9,7 @@
 
         <h1>新しいコラ画像を追加する</h1>
 
-        <%= form_with(model: @colla, local: true) do |form| %>
+        <%= form_with(model: @colla, local: true, id: :colla_new) do |form| %>
           <% if @colla.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(@colla.errors.count, "error") %> prohibited this colla from being saved:</h2>
