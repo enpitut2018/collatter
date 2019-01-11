@@ -1,9 +1,9 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <p id="notice"><%= notice %></p>
 
-
-<p>
+<div class="collas">
   <%= image_tag @colla.image.to_s %>
-</p>
+</div>
 
 <p>
   <strong>タグ:</strong>
@@ -17,7 +17,7 @@
 
 <%= form_with url: '/twitter_post_media' do |f| %>
   <%= f.text_area :content, value: "Tweeted from #{request.url}" %>
-  <%= f.hidden_field :colla, value: @colla.id %>
+  <%= f.hidden_field :colla, value: @colla.id %><br>
   <%= f.submit '画像とともにツイート' %>
 <% end %>
 

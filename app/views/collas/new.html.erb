@@ -4,7 +4,7 @@
        <meta charset="UTF-8">
        <title>画像ファイルをCANVSでプレビュー</title>
    </head>
-
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <body>
 
         <h1>新しいコラ画像を追加する</h1>
@@ -27,7 +27,7 @@
             <%# form.label "元の画像をアップロードしてください" %>
             <%= form.file_field :image, id: :colla_image %>
           </div>
-
+    
           <!-- Canvas -->
           <div>
             <h3>入れたい文字を入力してください</h3>
