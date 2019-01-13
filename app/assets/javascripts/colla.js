@@ -80,28 +80,46 @@ function OnButtonClick(){
 
 function Upload(){
   console.log('convert to file');
-  var dataURL=canvas[0].toDataURL();
+  var canvas = $("#cnvs");
+  var dataURL=canvas[0].toDataURL('image/png');
   var blobBin = atob(dataURL.split(',')[1]);
   var array = [];
   for(var i = 0; i < blobBin.length; i++) {
       array.push(blobBin.charCodeAt(i));
   }
   var fileBlob=new Blob([new Uint8Array(array)], {type: 'image/png'});
-  var file = new File([fileBlob], "name");
+  var file = new File([fileBlob], "name.png");
 
-  var form = $('form#colla_new');
+  //var form = $('form#colla_new');
   var formdata = new FormData();
-  formdata.append("colla_image", file);
+  //formdata.append("image", fileBlob);
+  //formdata.append("colla[tag_txt]", $('#colla_tag_txt').val());
+  //formdata.append("tag_txt", 'dummy text');
+  var tag_txt = $('#colla_tag_txt').val());
+  var data = JSON.stringify({
+    'colla': {
+      'image': fileBlob,
+      'tag_txt': tag_txt
+    }
+  });
 
   $.ajax({
-      url: '/collas/new',
+      url: '/collas',
       type: 'POST',
-      data: formdata,
+      //data: formdata,
+      data: data,
+      // data: {
+      //   colla: {
+      //     image: file,
+      //     tag_txt: 'dummy'
+      //   }
+      // },
       processData: false,
-      contentType: false,
+      // contentType: false,
+      contentType: 'application/json',
       dataType: 'json'
     })
       .done(function(data){
         console.log(data);
-      })
+      });
 }

@@ -13,6 +13,7 @@ gem 'dotenv-rails' #環境変数を簡単に利用できるgem
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'awesome_rails_console'
+gem 'pry-byebug', group: :development
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
