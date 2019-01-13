@@ -95,7 +95,7 @@ function Upload(){
   //formdata.append("image", fileBlob);
   //formdata.append("colla[tag_txt]", $('#colla_tag_txt').val());
   //formdata.append("tag_txt", 'dummy text');
-  var tag_txt = $('#colla_tag_txt').val());
+  var tag_txt = $('#colla_tag_txt').val();
   var data = JSON.stringify({
     'colla': {
       'image': fileBlob,
