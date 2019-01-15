@@ -8,22 +8,55 @@
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
-    <div class="logo">
-      <%= link_to root_path, target: "_brank" do %>
-        <%= image_tag '/collatter.png' %>
-      <% end %>
+    <div class="header">
+      <div class="collatter_logo">
+      <%= link_to image_tag("/collatter.png"), root_path %>
+      </div>
+      <div>
+      </div>
+      <div class="twitter">
+      <% if logged_in? %>
+        <div class="login_out">
+          <%= current_user.username %>
+          <br><%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
+        </div>
+        <div class="user_info">
+          <%= image_tag current_user.image_url.to_s %>
+        </div>
+      <% else %>
+        <div class="login_out">
+          <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
+        </div>
+        <% end %>
+      </div>
+
     </div>
 
-    <div class="twitter">
-    <% if logged_in? %>
-      <%= image_tag current_user.image_url.to_s %>
-      <br><%= current_user.username %>
-      <%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
-    <% else %>
-       <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
-    <% end %>
+    <div class="menu">
+      <div id="nav-drawer">
+        <input id="nav-input" type="checkbox" class="nav-unshown">
+        <label id="nav-open" for="nav-input"><span></span></label>
+        <label class="nav-unshown" id="nav-close" for="nav-input"></label>
+        <div id="nav-content">
+          <ul class="smartmenulist">
+          <li><%= link_to 'コラ画像を見る', '/collas' %></li>
+          <li><%= link_to 'コラ画像を作る', new_colla_path %></li>
+          <li><%= link_to '元ネタ画像を見る', '/templates' %></li>
+          <li><%= link_to '元ネタ画像を投稿する', new_template_path %></li>
+          <li><%= link_to '使い方', '/static_pages/about' %></li>
+          </ul>
+        </div>
+      </div>
+
+      <ul class="menulist">
+      <li><%= link_to 'コラ画像を見る', '/collas' %></li>
+      <li><%= link_to 'コラ画像を作る', new_colla_path %></li>
+      <li><%= link_to '元ネタ画像を見る', '/templates' %></li>
+      <li><%= link_to '元ネタ画像を投稿する', new_template_path %></li>
+      <li><%= link_to '使い方', '/static_pages/about' %></li>
+      </ul>
     </div>
-    
+
     <div class="all">
       <%= yield %>
     </div>

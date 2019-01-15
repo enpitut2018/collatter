@@ -9,7 +9,10 @@
 
         <h1>新しいコラ画像を追加する</h1>
 
-        <%= form_with(model: @colla, local: true) do |form| %>
+        <h3>元の画像をアップロードしてください</h3>
+        <input type='file' id="colla_image">
+
+        <%= form_with(model: @colla, local: true, id: :colla_new) do |form| %>
           <% if @colla.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(@colla.errors.count, "error") %> prohibited this colla from being saved:</h2>
@@ -21,12 +24,6 @@
               </ul>
             </div>
           <% end %>
-
-          <div class="field">
-            <h3>元の画像をアップロードしてください</h3>
-            <%# form.label "元の画像をアップロードしてください" %>
-            <%= form.file_field :image, id: :colla_image %>
-          </div>
 
           <!-- Canvas -->
           <div>
@@ -41,11 +38,9 @@
             <%= form.label :コラ画像のタグを入力してください %>
             <%= form.text_field :tag_txt, id: :colla_tag_txt %>
           </div>
-         
-          <div class="actions">
-            <%= form.submit %>
-          </div>
+
         <% end %>
+        <button onclick="Upload();">Upload</button>
 
 
         <%= link_to '戻る', collas_path %>
