@@ -10,14 +10,17 @@
   <body>
     <div class="header">
       <div class="logo">
-        <%= link_to(image_tag("/collatter.png"), root_path) %>
+      <%= link_to image_tag("/collatter.png"), root_path %>
       </div>
-
       <div class="twitter">
       <% if logged_in? %>
-        <%= image_tag current_user.image_url.to_s %>
-        <br><%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
-        <%= current_user.username %>
+        <div class="logout">
+          <%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
+        </div>
+        <div class="account">
+          <%= image_tag current_user.image_url.to_s %>
+          <%= current_user.username %>
+        </div>
       <% else %>
         <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
       <% end %>
