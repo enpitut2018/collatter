@@ -24,7 +24,10 @@ class CollasController < ApplicationController
   # POST /collas
   # POST /collas.json
   def create
-    @colla = Colla.new(colla_params)
+    tmp_params = colla_params
+    tmp_params[:image] = base64_conversion(tmp_params[:image_data_url])
+    tmp_params[:image_data_url] = nil
+    @colla = Colla.new(tmp_params.except(:image_data_url))
 
     respond_to do |format|
       if @colla.save
@@ -69,6 +72,33 @@ class CollasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def colla_params
-      params.require(:colla).permit(:image, :tag_txt, :template_id)
+      params.require(:colla).permit(:image, :image_data_url, :tag_txt, :template_id)
     end
+
+  def split_base64(uri_str)
+    if uri_str.match(%r{data:([a-zA-Z0-9/]*?);([a-zA-Z0-9]*?),(.*)$})
+      uri = Hash.new
+      uri[:type] = $1
+      uri[:encoder] = $2
+      uri[:data] = $3
+      uri[:extension] = $1.split('/')[1]
+      return uri
+    else
+      return nil
+    end
+  end
+
+  def base64_conversion(uri_str, filename = 'base64')
+    image_data = split_base64(uri_str)
+    image_data_string = image_data[:data]
+    image_data_binary = Base64.decode64(image_data_string)
+
+    temp_img_file = Tempfile.new(filename)
+    temp_img_file.binmode
+    temp_img_file << image_data_binary
+    temp_img_file.rewind
+
+    img_params = {:filename => "#{filename}.#{image_data[:extension]}", :type => image_data[:type], :tempfile => temp_img_file}
+    ActionDispatch::Http::UploadedFile.new(img_params)
+  end
 end
