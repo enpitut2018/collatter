@@ -15,11 +15,11 @@
       <div class="twitter">
       <% if logged_in? %>
         <div class="logout">
-          <%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
+          <%= current_user.username %>
+          <br><%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
         </div>
         <div class="account">
           <%= image_tag current_user.image_url.to_s %>
-          <%= current_user.username %>
         </div>
       <% else %>
         <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
