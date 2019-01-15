@@ -8,22 +8,34 @@
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
-    <div class="logo">
-      <%= link_to root_path, target: "_brank" do %>
-        <%= image_tag '/collatter.png' %>
+    <div class="header">
+      <div class="logo">
+        <%= link_to(image_tag("/collatter.png"), root_path) %>
+      </div>
+
+      <div class="twitter">
+      <% if logged_in? %>
+        <%= image_tag current_user.image_url.to_s %>
+        <br><%= current_user.username %>
+        <%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
+      <% else %>
+        <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
       <% end %>
+      </div>
+
+      <div class="fix">
+      </div>
     </div>
 
-    <div class="twitter">
-    <% if logged_in? %>
-      <%= image_tag current_user.image_url.to_s %>
-      <br><%= current_user.username %>
-      <%= link_to 'ログアウト', logout_path, method: :delete %><!-- not working -->
-    <% else %>
-       <%= link_to 'Twitterでログイン', '/auth/twitter' %>ログインしてください
-    <% end %>
+    <div class="menu">
+      <ul>
+      <li><%= link_to 'コラ画像を見る', 'collas' %></li>
+      <li><%= link_to 'コラ画像を作る', new_colla_path %></li>
+      <li><%= link_to '元ネタ画像を見る', 'templates' %></li>
+      <li><%= link_to '元ネタ画像を投稿する', new_template_path %></li>
+      <li><%= link_to '使い方', 'static_pages/about' %></li>
     </div>
-    
+
     <div class="all">
       <%= yield %>
     </div>
