@@ -1,6 +1,6 @@
 // turbolinks:load でロード時に読み込む．
 // https://qiita.com/hiroyayamamo/items/b258acbaa089d9482c8a
-$(document).on('turbolinks:load', function() {
+$(document).on('ready', function() {
   // id="colla_image"の変化でコールバック
   $("#colla_image").change(function(){
     // 選択ファイルの有無をチェック
@@ -92,13 +92,6 @@ $(document).on('turbolinks:load', function() {
     //ctx.clearRect(colla_x, colla_y, 30, 30);
   });
 
-  function GetDataURL() {
-    var canvas = $("#cnvs");
-    // hiddenフィールドにバイナリの中身をかく．
-    var dataurl = canvas[0].toDataURL();
-    $('#image_data_url').val(dataurl);
-  }
-
   function dataURLToBlob(dataURL) {
     var BASE64_MARKER = ';base64,';
     if (dataURL.indexOf(BASE64_MARKER) == -1) {
@@ -122,6 +115,15 @@ $(document).on('turbolinks:load', function() {
 
     return new Blob([uInt8Array], {type: contentType});
   }
+
+  $('#colla_new').submit(function(){
+    var canvas = $("#cnvs");
+    // hiddenフィールドにバイナリの中身をかく．
+    var dataurl = canvas[0].toDataURL();
+    $('#image_data_url').val(dataurl);
+
+    return true;
+  });
 
 });
 
@@ -231,6 +233,7 @@ function Upload(){
 }
 
 function GetDataURL() {
+  var canvas = $("#cnvs");
   // hiddenフィールドにバイナリの中身をかく．
   var dataurl = canvas[0].toDataURL();
   $('#image_data_url').val(dataurl);
