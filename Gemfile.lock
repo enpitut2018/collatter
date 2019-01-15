@@ -182,7 +182,6 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    rmagick (2.16.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     sass (3.7.3)
@@ -268,7 +267,6 @@ DEPENDENCIES
   pry-byebug
   puma (~> 3.7)
   rails (~> 5.1.6)
-  rmagick
   sass-rails (~> 5.0)
   selenium-webdriver
   spring

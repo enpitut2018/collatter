@@ -1,5 +1,4 @@
 class CollasController < ApplicationController
-  include CollasHelper
   before_action :set_colla, only: [:show, :edit, :update, :destroy]
 
   # GET /collas
@@ -26,15 +25,8 @@ class CollasController < ApplicationController
   # POST /collas.json
   def create
     tmp_params = colla_params
-    logger.debug('=================================================')
-    logger.debug(tmp_params)
-    logger.debug(tmp_params[:image_data_url].length)
     tmp_params[:image] = base64_conversion(tmp_params[:image_data_url])
-    logger.debug(base64_conversion(tmp_params[:image_data_url]))
     tmp_params[:image_data_url] = nil
-    logger.debug('=================================================')
-    logger.debug(tmp_params)
-    logger.debug(tmp_params.class)
     @colla = Colla.new(tmp_params.except(:image_data_url))
 
     respond_to do |format|

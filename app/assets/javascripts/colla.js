@@ -63,6 +63,7 @@ $(document).on('turbolinks:load', function() {
     // hiddenフィールドにバイナリの中身をかく．
     var dataurl = canvas[0].toDataURL();
     $('#image_data_url').val(dataurl);
+    $('#colla_image').val('');
 
     return true;
   });
