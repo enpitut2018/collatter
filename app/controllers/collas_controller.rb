@@ -1,4 +1,5 @@
 class CollasController < ApplicationController
+  include CollasHelper
   before_action :set_colla, only: [:show, :edit, :update, :destroy]
 
   # GET /collas

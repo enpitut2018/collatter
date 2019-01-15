@@ -91,10 +91,16 @@ function Upload(){
   var file = new File([fileBlob], "name.png");
 
   //var form = $('form#colla_new');
-  var formdata = new FormData();
+  //var formdata = new FormData();
   //formdata.append("image", fileBlob);
   //formdata.append("colla[tag_txt]", $('#colla_tag_txt').val());
   //formdata.append("tag_txt", 'dummy text');
+  var formdata = new FormData({
+    'colla': {
+      'image': file,
+      'tag_txt': tag_txt
+    }
+  });
   var tag_txt = $('#colla_tag_txt').val();
   var data = JSON.stringify({
     'colla': {
@@ -107,7 +113,7 @@ function Upload(){
       url: '/collas',
       type: 'POST',
       //data: formdata,
-      data: data,
+      data: formdata,
       // data: {
       //   colla: {
       //     image: file,
