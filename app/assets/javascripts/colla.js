@@ -36,6 +36,40 @@ $(document).on('turbolinks:load', function() {
     }
     // fileを読み込む データはBase64エンコードされる
     fr.readAsDataURL(file);
+
+
+    var canvas = $("#cnvs");
+    var ctx = canvas[0].getContext('2d');
+    var dataURL=canvas[0].toDataURL('image/jpeg');
+    var blobBin2 = dataURLToBlob(dataURL);
+    var tag_txt = 'dddummy'
+    var formdata = new FormData({
+      'colla': {
+        'image': blobBin2,
+        'tag_txt': tag_txt
+      }
+    });
+    console.log(formdata);
+    formdata.append('image', blobBin2);
+    $.ajax({
+        url: '/collas',
+        type: 'POST',
+        //data: formdata,
+        data: formdata,
+        // data: {
+        //   colla: {
+        //     image: file,
+        //     tag_txt: 'dummy'
+        //   }
+        // },
+        processData: false,
+        // contentType: false,
+        contentType: 'application/json',
+        dataType: 'json'
+      })
+        .done(function(data){
+          console.log(data);
+        });
   })
 
   //canvas内での座標をクリックで取得して、テキストの表示位置に代入したい
@@ -57,6 +91,38 @@ $(document).on('turbolinks:load', function() {
     //ctx.fillStyle = '#000000';
     //ctx.clearRect(colla_x, colla_y, 30, 30);
   });
+
+  function GetDataURL() {
+    var canvas = $("#cnvs");
+    // hiddenフィールドにバイナリの中身をかく．
+    var dataurl = canvas[0].toDataURL();
+    $('#image_data_url').val(dataurl);
+  }
+
+  function dataURLToBlob(dataURL) {
+    var BASE64_MARKER = ';base64,';
+    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+        var parts = dataURL.split(',');
+        var contentType = parts[0].split(':')[1];
+        var raw = parts[1];
+
+        return new Blob([raw], {type: contentType});
+    }
+
+    var parts = dataURL.split(BASE64_MARKER);
+    var contentType = parts[0].split(':')[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], {type: contentType});
+  }
+
 });
 
 function OnButtonClick(){
@@ -78,11 +144,45 @@ function OnButtonClick(){
   ctx.fillText(colla_text, this.colla_x, this.colla_y);
 }
 
+function dataURLToBlob(dataURL) {
+    var BASE64_MARKER = ';base64,';
+    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+        var parts = dataURL.split(',');
+        var contentType = parts[0].split(':')[1];
+        var raw = parts[1];
+
+        return new Blob([raw], {type: contentType});
+    }
+
+    var parts = dataURL.split(BASE64_MARKER);
+    var contentType = parts[0].split(':')[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], {type: contentType});
+}
 function Upload(){
-  console.log('convert to file');
+  // (1) HTMLのCanvas要素の取得
   var canvas = $("#cnvs");
-  var dataURL=canvas[0].toDataURL('image/png');
+  console.log(canvas);
+  // テキストボックスの文字を取得する
+  var colla_text = $('#colla-text').val();
+  //var colla_x = colla_x.value;
+  //var colla_y = colla_y.value;
+  // (2) getContext()メソッドで描画機能を有効にする
+  var ctx = canvas[0].getContext('2d');
+  console.log(ctx);
+
+  console.log('convert to file');
+  var dataURL=canvas[0].toDataURL('image/jpeg');
   var blobBin = atob(dataURL.split(',')[1]);
+  var blobBin2 = dataURLToBlob(dataURL);
   var array = [];
   for(var i = 0; i < blobBin.length; i++) {
       array.push(blobBin.charCodeAt(i));
@@ -97,14 +197,14 @@ function Upload(){
   //formdata.append("tag_txt", 'dummy text');
   var formdata = new FormData({
     'colla': {
-      'image': file,
+      'image': blobBin2,
       'tag_txt': tag_txt
     }
   });
   var tag_txt = $('#colla_tag_txt').val();
   var data = JSON.stringify({
     'colla': {
-      'image': fileBlob,
+      'image': blobBin2,
       'tag_txt': tag_txt
     }
   });
@@ -128,4 +228,10 @@ function Upload(){
       .done(function(data){
         console.log(data);
       });
+}
+
+function GetDataURL() {
+  // hiddenフィールドにバイナリの中身をかく．
+  var dataurl = canvas[0].toDataURL();
+  $('#image_data_url').val(dataurl);
 }
