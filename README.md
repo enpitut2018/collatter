@@ -5,7 +5,7 @@
 手軽にコラ画像を作成し、共有することができる「Collatter」というアプリです。元画像の吹き出しの白塗りや、文字挿入、Twitterへの投稿が一括でできます。また、作成したコラ画像のテンプレートをCollatter上に投稿することができ、他のユーザーが作成したテンプレートからコラ画像を作成することもできます。
 
 ## URL
-* https://collatter18.herokuapp.com/
+* https://www.collatter.site/
 * CIのURL 未定
 * カンバンのURL
 ## メンバー
