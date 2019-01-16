@@ -14,6 +14,8 @@ gem 'jquery-rails'
 gem 'jquery-turbolinks'
 gem 'awesome_rails_console'
 gem 'pry-byebug', group: :development
+gem 'kaminari', '~> 0.17.0'
+gem 'kaminari-bootstrap', '~> 3.0.1'
 #gem 'rmagick'  # Not used.
 
 
