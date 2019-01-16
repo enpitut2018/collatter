@@ -2,6 +2,9 @@ var mytap = window.ontouchstart===null?"touchstart":"click";
 document.write(mytap);
 
 $(function(){
+  // turbolinks:load でロード時に読み込む．
+// https://qiita.com/hiroyayamamo/items/b258acbaa089d9482c8a
+$(document).on('turbolinks:load', function() {
   // id="colla_image"の変化でコールバック
   $("#colla_image").change(function(){
     // 選択ファイルの有無をチェック
