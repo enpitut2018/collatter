@@ -156,6 +156,14 @@
     .all{
       text-align: center;
     }
+    footer {
+      background-color: #FFCC99;
+      display:flex;
+      justify-content: flex-end;
+    }
+    footer a{
+      padding:3px;
+    }
   }
 
   @media screen and (min-width:871px) {
@@ -242,5 +250,12 @@
       padding: 1% 8%;
       font-size: 150%;
     }
+    footer {
+      background-color: #FFCC99;
+      display:flex;
+      justify-content: flex-end;
+    }
+    footer a{
+      padding:3px;
+    }
   }
-
