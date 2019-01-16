@@ -93,15 +93,14 @@ function OnButtonClick(){
   // テキストボックスの文字を取得する
   var colla_text = $('#colla-text').val();
   let str = "";
-	const write_direction = document.getElementsByName("write_direction");
+  const write_direction = document.getElementsByName("write_direction");
 
-
-	for (let i = 0; i < write_direction.length; i++){
-		if(write_direction[i].checked){ 
-			str = write_direction[i].value;
-			break;
-		}
-	}
+  for (let i = 0; i < write_direction.length; i++){
+    if(write_direction[i].checked){
+      str = write_direction[i].value;
+      break;
+    }
+  }
   //var write_direction = "vertical";
   var direction = str;
   //var colla_x = colla_x.value;
