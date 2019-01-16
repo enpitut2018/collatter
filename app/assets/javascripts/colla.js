@@ -92,6 +92,18 @@ function OnButtonClick(){
   var canvas = $("#cnvs");
   // テキストボックスの文字を取得する
   var colla_text = $('#colla-text').val();
+  let str = "";
+	const write_direction = document.getElementsByName("write_direction");
+
+
+	for (let i = 0; i < write_direction.length; i++){
+		if(write_direction[i].checked){ 
+			str = write_direction[i].value;
+			break;
+		}
+	}
+  //var write_direction = "vertical";
+  var direction = str;
   //var colla_x = colla_x.value;
   //var colla_y = colla_y.value;
   // (2) getContext()メソッドで描画機能を有効にする
@@ -103,5 +115,18 @@ function OnButtonClick(){
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = '#002B69';
-  ctx.fillText(colla_text, this.colla_x, this.colla_y);
+  if (direction == "vertical"){
+    ctx.fillText(colla_text, this.colla_x, this.colla_y);
+  }else if (direction == "horizonal"){
+    var tategaki = function(ctx, colla_text, x, y) {
+      var textList = colla_text.split('\n');
+      var lineHeight = ctx.measureText("あ").width;
+      textList.forEach(function(elm, i) {
+        Array.prototype.forEach.call(elm, function(ch, j) {
+          ctx.fillText(ch, x-lineHeight*i, y+lineHeight*j);
+        });
+      });
+    };
+    tategaki(ctx, colla_text, this.colla_x, this.colla_y);
+  }
 }
