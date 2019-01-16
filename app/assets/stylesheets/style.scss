@@ -1,4 +1,4 @@
-@media screen and (max-width:480px) {
+@media screen and (max-width:870px) {
     /*スマホ用のcssを記述*/
     body {
       color: #2d3133;
@@ -154,7 +154,7 @@
     }
   }
   
-  @media screen and (min-width:481px) {
+  @media screen and (min-width:871px) {
     /*pc用のcssを記述*/
     body {
       color: #2d3133;
@@ -207,17 +207,19 @@
       text-align: center;
       padding: 1px;
       background-color: #3ea8ff;
+      width: 100%;
     }
   
     .menu li{
       display: inline;
+      width: 100%;
     }
   
     .menu li a{
       text-decoration: none;
       border: 2px solid transparent;
       padding: 10px 20px;
-      font-size: 20px;
+      font-size: 150%;
       letter-spacing: 0.2em;
       color: #ffffff;
     }
