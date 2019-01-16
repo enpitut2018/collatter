@@ -12,7 +12,8 @@
     <br><%= link_to '削除', colla, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 <% end %>
-<div>
-  <%= paginate @collas %>
+
 </div>
+<div class="pageing">
+  <%= paginate @collas %>
 </div>

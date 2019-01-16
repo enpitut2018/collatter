@@ -3,7 +3,7 @@ class CollasController < ApplicationController
 
   # GET /collas
   # GET /collas.json
-  PER = 4
+  PER = 10
   def index
     @collas = Colla.page(params[:page]).per(PER)
   end

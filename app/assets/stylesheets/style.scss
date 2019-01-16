@@ -164,6 +164,42 @@
     footer a{
       padding:3px;
     }
+
+    .pageing {
+       overflow: hidden;
+    }
+
+    .pagination {
+      list-style: none;
+      position: relative;
+      left: 50%;
+      float: left;
+    }
+
+.pagination li {
+    margin: 0 1px;
+    position: relative;
+    left: -50%;
+    float: left;
+}
+
+.pagination li a {
+    display: block;
+    font-size: 16px;
+    padding: 0.6em 1em;
+    border-radius: 3px;
+}
+
+.pagination li a {
+    background: #EEE;
+    color: #000;
+    text-decoration: none;
+}
+
+.pagination li a:hover {
+    background: #333;
+    color: #FFF;
+}
   }
 
   @media screen and (min-width:871px) {
@@ -258,4 +294,60 @@
     footer a{
       padding:3px;
     }
+    .pageing {
+       overflow: hidden;
+    }
+
+    .pagination {
+      list-style: none;
+      position: relative;
+      left: 50%;
+      float: left;
+    }
+
+.pagination li {
+    margin: 0 1px;
+    position: relative;
+    left: -50%;
+    float: left;
+}
+
+.pagination li a {
+    display: block;
+    font-size: 16px;
+    padding: 0.6em 1em;
+    border-radius: 3px;
+}
+
+.pagination li a {
+    background: #EEE;
+    color: #000;
+    text-decoration: none;
+}
+
+.pagination li a:hover {
+    background: #333;
+    color: #FFF;
+}
+    // .paging{
+    // }
+    //
+    // .paging ul{
+    //   list-style: none;
+    //   display:flex;
+    // }
+    //
+    // .pagination li{
+    //   display: inline;
+    //   margin: 1px;
+    //   background-color: #ffff;
+    //   border-style: solid;
+    //   border-color: #0000ff;
+    //   border-radius: 5px;
+    //   text-align: center;
+    //   text-decoration: none;
+    //   padding: 4px;
+    // }
+    // .page{
+    // }
   }
