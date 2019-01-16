@@ -1,3 +1,8 @@
+/*
+//デバック用；端末からの入力を判定
+var mytap = window.ontouchstart===null?"touchstart":"click";
+document.write(mytap);
+*/
 // turbolinks:load でロード時に読み込む．
 // https://qiita.com/hiroyayamamo/items/b258acbaa089d9482c8a
 $(document).on('turbolinks:load', function() {
@@ -38,6 +43,7 @@ $(document).on('turbolinks:load', function() {
     fr.readAsDataURL(file);
   })
 
+  if(mytap == "click"){
   //canvas内での座標をクリックで取得して、テキストの表示位置に代入したい
   $('#cnvs').on('click', function(event) {
     console.log('clicked canvas');
@@ -57,7 +63,25 @@ $(document).on('turbolinks:load', function() {
     //ctx.fillStyle = '#000000';
     //ctx.clearRect(colla_x, colla_y, 30, 30);
   });
+  } else {
+      // <div id="target">...</div>などの要素にタッチイベントを設定
+  $(document).on('touchstart', '#cnvs', function( event ) {
+	  var touchObject = event.originalEvent.changedTouches[0] ;
+	  var touchX = touchObject.pageX ;
+	  var touchY = touchObject.pageY ;
 
+	  // 要素の位置を取得
+	  var clientRect = this.getBoundingClientRect() ;
+	  var positionX = clientRect.left + window.pageXOffset ;
+	  var positionY = clientRect.top + window.pageYOffset ;
+
+	  // 要素内におけるタッチ位置を計算
+	  colla_x = touchX - positionX ;
+    colla_y = touchY - positionY ;
+    document.getElementById("address").innerText = "x = " + colla_x + ", y = " + colla_y;
+  } ) ;
+
+  }
   $('#colla_new').submit(function(){
     var canvas = $("#cnvs");
     // hiddenフィールドにバイナリの中身をかく．
