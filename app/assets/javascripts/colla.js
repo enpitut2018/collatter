@@ -92,7 +92,9 @@ function OnButtonClick(){
   var canvas = $("#cnvs");
   // テキストボックスの文字を取得する
   var colla_text = $('#colla-text').val();
+  //縦書きか横書きかラヂオボタンのvalueを取得
   let str = "";
+
   const write_direction = document.getElementsByName("write_direction");
 
   for (let i = 0; i < write_direction.length; i++){
@@ -101,22 +103,24 @@ function OnButtonClick(){
       break;
     }
   }
-  //var write_direction = "vertical";
   var direction = str;
+  //フォントカラーを取得
+  var color = document.getElementById("font-color").value;
+  var fontsize = document.getElementById("font-size").value;
   //var colla_x = colla_x.value;
   //var colla_y = colla_y.value;
   // (2) getContext()メソッドで描画機能を有効にする
   var ctx = canvas[0].getContext('2d');
-
+  var font_style = "bold " + fontsize + "px 'MS Pゴシック'";
   ctx.fillStyle = '#00000000';
   ctx.fillRect(100, 100, 140, 30);
-  ctx.font = "bold 20px 'MS Pゴシック'";
+  ctx.font = font_style;
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillStyle = '#002B69';
-  if (direction == "vertical"){
+  ctx.fillStyle = color;
+  if (direction == "horizonal"){
     ctx.fillText(colla_text, this.colla_x, this.colla_y);
-  }else if (direction == "horizonal"){
+  }else if (direction == "vertical"){
     var tategaki = function(ctx, colla_text, x, y) {
       var textList = colla_text.split('\n');
       var lineHeight = ctx.measureText("あ").width;
