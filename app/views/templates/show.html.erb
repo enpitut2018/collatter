@@ -8,4 +8,6 @@
   <%= @template.tag_txt %>
 </p>
 
+<%= link_to 'コラを作る', new_colla_path(template_id: @template.id) %>
+
 <%= link_to '戻る', templates_path %>
