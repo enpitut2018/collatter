@@ -1,8 +1,7 @@
-/*
 //デバック用；端末からの入力を判定
 var mytap = window.ontouchstart===null?"touchstart":"click";
-document.write(mytap);
-*/
+//document.write(mytap);
+
 // turbolinks:load でロード時に読み込む．
 // https://qiita.com/hiroyayamamo/items/b258acbaa089d9482c8a
 $(document).on('turbolinks:load', function() {
