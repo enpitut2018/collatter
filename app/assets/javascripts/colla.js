@@ -58,7 +58,6 @@ $(document).on('turbolinks:load', function() {
     // 要素内におけるクリック位置を計算
     colla_x = clickX - positionX ;
     colla_y = clickY - positionY ;
-    document.getElementById("colla-text").innerText = "x = " + colla_x + ", y = " + colla_y;
     //var canvas = $("#cnvs");
     //var ctx = canvas[0].getContext('2d');
     //ctx.fillStyle = '#000000';
