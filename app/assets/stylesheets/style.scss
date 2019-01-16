@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 @media screen and (max-width:870px) {
     /*スマホ用のcssを記述*/
     body {
@@ -6,7 +10,7 @@
       margin: 0;
       min-height: 1vh;
     }
-  
+
     .header{
       background-color: #ff8c00;
       display: flex;
@@ -14,43 +18,43 @@
       padding: 0;
       text-decoration: none;
     }
-  
+
     .collatter_logo{
-      width: 40%; 
+      width: 40%;
       /* margin-right: auto; */
       padding: 2% 0 0 2%;
     }
-  
+
     .collatter_logo img{
       /* background-size: contain; */
       width: 100%;
     }
-  
+
     .twitter{
       text-align: right;
       /* position: relative; */
       padding: 2% 2% 0 ;
       height: 100%;
     }
-  
+
     .login_out{
       display: inline-block;
     }
-  
+
     .user_info{
       display: inline-block;
       height: 100%;
     }
-  
+
     #nav-drawer {
     position: relative;
     }
-    
+
     /* チェックボックス等は非表示に */
     .nav-unshown{
       display:none;
     }
-    
+
     /*アイコンのスペース*/
     #nav-open {
     display: inline-block;
@@ -61,7 +65,7 @@
     background-color: #ff8c009c;
     border-bottom-right-radius: 10px;
     }
-    
+
     /*ハンバーガーアイコンをCSSだけで表現*/
     #nav-open span, #nav-open span:before, #nav-open span:after {
     position: absolute;
@@ -79,7 +83,7 @@
     #nav-open span:after {
     bottom: -16px;
     }
-    
+
     /*閉じる用の薄黒カバー*/
     #nav-close {
     display: none;/*はじめは隠しておく*/
@@ -93,7 +97,7 @@
     opacity: 0;
     transition: .3s ease-in-out;
     }
-    
+
     /*中身*/
     #nav-content {
     overflow: auto;
@@ -109,7 +113,7 @@
     transform: translateX(-105%);/*左に隠しておく*/
     color: #ffffff;
     }
-  
+
     #nav-content li{
       padding:10% 0 10% 5px;
       height: 100%;
@@ -117,7 +121,7 @@
       border-bottom-color: #ffe15c;
       border-bottom-style: solid;
     }
-  
+
     #nav-content a{
       text-decoration: none;
       border: 2px solid transparent;
@@ -125,35 +129,35 @@
       letter-spacing: 0.2em;
       color: #ffffff;
     }
-  
+
     #nav-content ul{
       position: absolute;
       list-style: none;
       padding: 0;
     }
-  
-    
+
+
     /*チェックが入ったらもろもろ表示*/
     #nav-input:checked ~ #nav-close {
     display: block;/*カバーを表示*/
     opacity: .5;
     }
-    
+
     #nav-input:checked ~ #nav-content {
     -webkit-transform: translateX(0%);
     transform: translateX(0%);/*中身を表示（右へスライド）*/
     box-shadow: 6px 0 25px rgba(0,0,0,.15);
     }
-  
+
     .menulist{
       display: none;
     }
-  
+
     .all{
       text-align: center;
     }
   }
-  
+
   @media screen and (min-width:871px) {
     /*pc用のcssを記述*/
     body {
@@ -163,12 +167,12 @@
       min-height: 1vh;
       line-height: 200%;
     }
-  
+
     p {
       font-size: 15px;
       line-height: 140%;
     }
-  
+
     .header{
       background-color: #ff8c00;
       display: flex;
@@ -176,28 +180,28 @@
       padding: 0;
       text-decoration: none;
     }
-    
+
     .twitter{
       text-align: right;
       position: relative;
       padding: 2% 2% 0 ;
       height: 100%;
     }
-  
+
     .collatter_logo{
-      width: 40%; 
+      width: 40%;
       margin-right: auto;
       padding: 14px 0 0 10px;
     }
-  
+
     .collatter_logo img{
       width: 40%;
     }
-  
+
     .login_out{
       display: inline-block;
     }
-  
+
     .user_info{
       display: inline-block;
       height: 100%;
@@ -208,11 +212,11 @@
       padding: 1px;
       background-color: #3ea8ff;
     }
-  
+
     .menu li{
       display: inline;
     }
-  
+
     .menu li a{
       text-decoration: none;
       border: 2px solid transparent;
@@ -221,22 +225,22 @@
       letter-spacing: 0.2em;
       color: #ffffff;
     }
-  
+
     .menu li a:hover {
       border: 2px solid #fff;
       border-radius: 10px;
       background-color: #fffff0;
       color: #000000;
     }
-  
+
     #nav-drawer{
-     display: none; 
+     display: none;
     }
-  
+
     .all{
       text-align: left;
       padding: 1% 8%;
       font-size: 150%;
     }
   }
-  
+
