@@ -94,13 +94,15 @@ function OnButtonClick(){
   var colla_text = $('#colla-text').val();
   //縦書きか横書きかラヂオボタンのvalueを取得
   let str = "";
-	const write_direction = document.getElementsByName("write_direction");
-	for (let i = 0; i < write_direction.length; i++){
-		if(write_direction[i].checked){
-			str = write_direction[i].value;
-			break;
-		}
-	}
+
+  const write_direction = document.getElementsByName("write_direction");
+
+  for (let i = 0; i < write_direction.length; i++){
+    if(write_direction[i].checked){
+      str = write_direction[i].value;
+      break;
+    }
+  }
   var direction = str;
   //フォントカラーを取得
   var color = document.getElementById("font-color").value;
@@ -116,9 +118,9 @@ function OnButtonClick(){
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = color;
-  if (direction == "vertical"){
+  if (direction == "horizonal"){
     ctx.fillText(colla_text, this.colla_x, this.colla_y);
-  }else if (direction == "horizonal"){
+  }else if (direction == "vertical"){
     var tategaki = function(ctx, colla_text, x, y) {
       var textList = colla_text.split('\n');
       var lineHeight = ctx.measureText("あ").width;
