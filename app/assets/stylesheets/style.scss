@@ -152,6 +152,14 @@
     .all{
       text-align: center;
     }
+    footer {
+      background-color: #FFCC99;
+      display:flex;
+      justify-content: flex-end;
+    }
+    footer a{
+      padding:3px;
+    }
   }
 
   @media screen and (min-width:871px) {
@@ -167,6 +175,10 @@
     p {
       font-size: 15px;
       line-height: 140%;
+    }
+
+    #notice p{
+      text-align: center;
     }
 
     .header{
