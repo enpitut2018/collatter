@@ -14,6 +14,9 @@ class CollasController < ApplicationController
 
   # GET /collas/new
   def new
+    if params[:template_id]
+      @template = Template.find(params[:template_id])
+    end
     @colla = Colla.new
   end
 
@@ -24,6 +27,7 @@ class CollasController < ApplicationController
   # POST /collas
   # POST /collas.json
   def create
+    # Base64の文字列からファイルにして保存する．
     tmp_params = colla_params
     tmp_params[:image] = base64_conversion(tmp_params[:image_data_url])
     tmp_params[:image_data_url] = nil

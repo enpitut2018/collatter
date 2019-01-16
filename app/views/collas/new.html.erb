@@ -9,6 +9,10 @@
 
         <h1>新しいコラ画像を追加する</h1>
 
+        <% if @template %>
+          <%= image_tag @template.image.to_s, class: 'hidden', id: :template_image %>
+        <% end %>
+
         <%= form_with(model: @colla, local: true, id: :colla_new) do |form| %>
           <% if @colla.errors.any? %>
             <div id="error_explanation">

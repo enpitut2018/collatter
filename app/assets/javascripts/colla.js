@@ -1,6 +1,13 @@
 // turbolinks:load でロード時に読み込む．
 // https://qiita.com/hiroyayamamo/items/b258acbaa089d9482c8a
 $(document).on('turbolinks:load', function() {
+  if ($('#template_image').length > 0) {
+    console.log('template_image exists');
+    var image = $('#template_image')[0];
+    DrawImgOnCanvas(image);
+  } else {
+    console.log('template_image not found');
+  }
   // id="colla_image"の変化でコールバック
   $("#colla_image").change(function(){
     // 選択ファイルの有無をチェック
@@ -69,6 +76,16 @@ $(document).on('turbolinks:load', function() {
   });
 
 });
+
+function DrawImgOnCanvas(image){
+  var canvas = $('#cnvs');
+  var cnvsH = 300;
+  var cnvsW = image.naturalWidth*cnvsH/image.naturalHeight;
+  canvas.attr('width', cnvsW);
+  canvas.attr('height', cnvsH);
+  var ctx = canvas[0].getContext('2d');
+  ctx.drawImage(image, 0, 0, cnvsW, cnvsH);
+}
 
 function OnButtonClick(){
   // (1) HTMLのCanvas要素の取得

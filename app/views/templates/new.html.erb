@@ -1,3 +1,31 @@
 <h2>元ネタ画像を投稿する</h2>
 
-<%= render 'form', template: @template %>
+<%= form_with(model: @template, local: true) do |form| %>
+  <% if @template.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@template.errors.count, "error") %> prohibited this template from being saved:</h2>
+
+      <ul>
+      <% @template.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :画像を選択してください %>
+    <%= form.file_field :image, id: :template_image %>
+  </div>
+
+  <canvas id="cnvs"></canvas>
+
+  <div class="field">
+    <%= form.label :画像をタグ付けしましょう %>
+    <%= form.text_field :tag_txt, id: :template_tag_txt %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
