@@ -5,7 +5,7 @@ class TemplatesController < ApplicationController
   # GET /templates.json
   PER = 10
   def index
-    @templates = Template..page(params[:page]).per(PER)
+    @templates = Template.page(params[:page]).per(PER)
   end
 
   # GET /templates/1
