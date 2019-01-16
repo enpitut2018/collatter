@@ -2,6 +2,36 @@
   display: none;
 }
 
+.pageing {
+  overflow: hidden;
+}
+
+.pagination {
+  list-style: none;
+  position: relative;
+  left: 50%;
+  float: left;
+}
+.pagination li {
+  margin: 0 1px;
+  position: relative;
+  left: -50%;
+  float: left;
+}
+.pagination li a {
+  display: block;
+  font-size: 16px;
+  padding: 0.6em 1em;
+  border-radius: 3px;
+  background: #EEE;
+  color: #000;
+  text-decoration: none;
+}
+.pagination li a:hover {
+  background: #333;
+  color: #FFF;
+}
+
 @media screen and (max-width:870px) {
     /*スマホ用のcssを記述*/
     body {
@@ -165,39 +195,6 @@
       padding:3px;
     }
 
-    .pageing {
-       overflow: hidden;
-    }
-
-    .pagination {
-      list-style: none;
-      position: relative;
-      left: 50%;
-      float: left;
-    }
-  .pagination li {
-     margin: 0 1px;
-     position: relative;
-     left: -50%;
-     float: left;
-   }
-  .pagination li a {
-     display: block;
-     font-size: 16px;
-     padding: 0.6em 1em;
-     border-radius: 3px;
-    }
-
-  .pagination li a {
-     background: #EEE;
-     color: #000;
-     text-decoration: none;
-    }
-
-  .pagination li a:hover {
-     background: #333;
-     color: #FFF;
-   }
   }
 
   @media screen and (min-width:871px) {
@@ -292,38 +289,4 @@
     footer a{
       padding:3px;
     }
-    .pageing {
-       overflow: hidden;
-    }
-
-    .pagination {
-      list-style: none;
-      position: relative;
-      left: 50%;
-      float: left;
-    }
-
-   .pagination li {
-      margin: 0 1px;
-      position: relative;
-      left: -50%;
-      float: left;
-    }
-    .pagination li a {
-      display: block;
-      font-size: 16px;
-      padding: 0.6em 1em;
-      border-radius: 3px;
-    }
-
-  .pagination li a {
-     background: #EEE;
-     color: #000;
-     text-decoration: none;
-   }
-
-  .pagination li a:hover {
-     background: #333;
-     color: #FFF;
-  }
   }
