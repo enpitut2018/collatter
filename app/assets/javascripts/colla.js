@@ -1,6 +1,13 @@
 // turbolinks:load でロード時に読み込む．
 // https://qiita.com/hiroyayamamo/items/b258acbaa089d9482c8a
 $(document).on('turbolinks:load', function() {
+  if ($('#template_image').length > 0) {
+    console.log('template_image exists');
+    var image = $('#template_image')[0];
+    DrawImgOnCanvas(image);
+  } else {
+    console.log('template_image not found');
+  }
   // id="colla_image"の変化でコールバック
   $("#colla_image").change(function(){
     // 選択ファイルの有無をチェック
@@ -70,11 +77,33 @@ $(document).on('turbolinks:load', function() {
 
 });
 
+function DrawImgOnCanvas(image){
+  var canvas = $('#cnvs');
+  var cnvsH = 300;
+  var cnvsW = image.naturalWidth*cnvsH/image.naturalHeight;
+  canvas.attr('width', cnvsW);
+  canvas.attr('height', cnvsH);
+  var ctx = canvas[0].getContext('2d');
+  ctx.drawImage(image, 0, 0, cnvsW, cnvsH);
+}
+
 function OnButtonClick(){
   // (1) HTMLのCanvas要素の取得
   var canvas = $("#cnvs");
   // テキストボックスの文字を取得する
   var colla_text = $('#colla-text').val();
+  let str = "";
+	const write_direction = document.getElementsByName("write_direction");
+
+
+	for (let i = 0; i < write_direction.length; i++){
+		if(write_direction[i].checked){ 
+			str = write_direction[i].value;
+			break;
+		}
+	}
+  //var write_direction = "vertical";
+  var direction = str;
   //var colla_x = colla_x.value;
   //var colla_y = colla_y.value;
   // (2) getContext()メソッドで描画機能を有効にする
@@ -86,5 +115,18 @@ function OnButtonClick(){
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = '#002B69';
-  ctx.fillText(colla_text, this.colla_x, this.colla_y);
+  if (direction == "vertical"){
+    ctx.fillText(colla_text, this.colla_x, this.colla_y);
+  }else if (direction == "horizonal"){
+    var tategaki = function(ctx, colla_text, x, y) {
+      var textList = colla_text.split('\n');
+      var lineHeight = ctx.measureText("あ").width;
+      textList.forEach(function(elm, i) {
+        Array.prototype.forEach.call(elm, function(ch, j) {
+          ctx.fillText(ch, x-lineHeight*i, y+lineHeight*j);
+        });
+      });
+    };
+    tategaki(ctx, colla_text, this.colla_x, this.colla_y);
+  }
 }
