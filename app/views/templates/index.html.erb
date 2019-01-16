@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<p>テンプレート検索</p>
+<%= form_tag(templates_path, :method => 'get' ) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
 <h1>テンプレート一覧</h1>
-
 <div class="collas">
 <% @templates.each do |template| %>
 <div>

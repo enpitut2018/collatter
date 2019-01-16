@@ -5,7 +5,7 @@ class CollasController < ApplicationController
   # GET /collas.json
   PER = 3
   def index
-    @collas = Colla.page(params[:page]).per(PER)
+    @collas = Colla.page(params[:page]).per(PER).search(params[:search])
   end
 
   # GET /collas/1
