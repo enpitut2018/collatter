@@ -42,6 +42,7 @@ $(document).on('turbolinks:load', function() {
     fr.readAsDataURL(file);
   })
 })
+}
 
 if(mytap == "click"){
 //canvas内での座標をクリックで取得して、テキストの表示位置に代入したい
