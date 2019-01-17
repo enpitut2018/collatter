@@ -245,29 +245,45 @@
       display: inline-block;
       height: 100%;
     }
-
     .menu{
-      text-align: center;
-      padding: 1px;
       background-color: #3ea8ff;
     }
 
+    .menu ul{
+      display: table;
+      margin: 0 auto;
+      padding: 0;
+      width: 80%;
+      text-align: center;
+    }
+
     .menu li{
-      display: inline;
+      display: table-cell;
+      min-width: 50px;
+      border: 1px solid #ccc;
+      border-width: 0 0.2px 0 0.2px;
     }
 
     .menu li a{
+      display: block;
+      width: 100%;
+      padding: 10px 0;
       text-decoration: none;
-      border: 2px solid transparent;
-      padding: 10px 20px;
-      font-size: 20px;
-      letter-spacing: 0.2em;
-      color: #ffffff;
+      color: #555;
+      font-weight: bold;
+      //text-decoration: none;
+      // border: 2px solid transparent;
+      // padding: 10px 20px;
+      // font-size: 20px;
+      //letter-spacing: 0.2em;
+      //color: #ffffff;
+      //font-weight: bold;
+      // padding: 20px;
     }
 
     .menu li a:hover {
-      border: 2px solid #fff;
-      border-radius: 10px;
+      //border: 2px solid #fff;
+      // border-radius: 10px;
       background-color: #fffff0;
       color: #000000;
     }

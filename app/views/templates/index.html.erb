@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<p>テンプレートを投稿する</p>
+<%= link_to 'テンプレートを投稿する', new_template_path %>
 <p>テンプレート検索</p>
 <%= form_tag(templates_path, :method => 'get' ) do %>
   <%= text_field_tag :search %>
