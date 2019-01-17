@@ -32,6 +32,42 @@
   color: #FFF;
 }
 
+input[type="text"] {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 0.3em;
+    transition: 0.3s;
+    letter-spacing: 1px;
+    color: #aaaaaa;
+    border: 1px solid #1b2538;
+    border-radius: 4px;
+  };
+
+  input[type="text"]:hover {
+    border: 1px solid #da3c41;
+    outline: none;
+    box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+  }
+
+  input[type="submit"] {
+    display       : inline-block;
+    border-radius : 5%;          /* 角丸       */
+    font-size     : 13pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 5px 5px;   /* 余白       */
+    background    : #eee;     /* 背景色     */
+    color         : #000;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+  }
+
+  input[type="submit"]:hover{
+    box-shadow    : none;        /* カーソル時の影消去 */
+    color         : #fff;     /* 背景色     */
+    background    : #000;     /* 文字色     */
+  }
+
 @media screen and (max-width:870px) {
     /*スマホ用のcssを記述*/
     body {
