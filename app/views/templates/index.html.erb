@@ -1,13 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>テンプレートを投稿する</p>
-<%= link_to 'テンプレートを投稿する', new_template_path %>
-<p>テンプレート検索</p>
+<h2>テンプレート検索</h2>
 <%= form_tag(templates_path, :method => 'get' ) do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', :name => nil %>
 <% end %>
-<h1>テンプレート一覧</h1>
+
+<h2>
+  <%= link_to '新たにテンプレートを投稿する', new_template_path %>
+</h2>
+
+<h2>テンプレート一覧</h2>
 <div class="collas">
 <% @templates.each do |template| %>
 <div>
