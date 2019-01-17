@@ -3,66 +3,147 @@
 $(document).on('turbolinks:load', function() {
   if ($('#template_image').length > 0) {
     console.log('template_image exists');
-    var image = $('#template_image')[0];
-    DrawImgOnCanvas(image);
   } else {
     console.log('template_image not found');
   }
-  // id="colla_image"の変化でコールバック
-  $("#colla_image").change(function(){
-    // 選択ファイルの有無をチェック
-    if (!this.files.length) {
-      alert('ファイルが選択されていません');
-      return;
+
+  var canvas = document.getElementById('cnvs');
+  var ctx = canvas.getContext('2d');
+
+  var objX, objY;
+  var objWidth, objHeight;
+  var x, y, relX, relY;
+  var dragging = false;
+  // オブジェクトの大きさを定義
+  objWidth = 50;
+  objHeight = 50;
+
+  // オブジェクトの座標を定義(キャンバスの中央に表示)
+  objX = canvas.width / 2;
+  objY = canvas.height / 2;
+
+  DrawTextOnImgCanvas(objX, objY);
+
+  var istouch = window.ontouchstart===null;
+
+  function onDown(e) {
+    console.log(istouch?'touchstart':'mousedown');
+    // キャンバスの左上端の座標を取得
+    var offsetX = canvas.getBoundingClientRect().left;
+    var offsetY = canvas.getBoundingClientRect().top;
+
+    // マウスが押された座標を取得
+    if (istouch) {
+      x = e.touches[0].pageX - offsetX;
+      y = e.touches[0].pageY - offsetY;
+    } else {
+      x = e.clientX - offsetX;
+      y = e.clientY - offsetY;
     }
-    // Formからファイルを取得
-    var file = this.files[0];
-    // (1) HTMLのCanvas要素の取得
-    var canvas = $("#cnvs");
-    // (2) getContext()メソッドで描画機能を有効にする
+
+    // オブジェクト上の座標かどうかを判定
+    // if (objX < x && (objX + objWidth) > x && objY < y && (objY + objHeight) > y) {
+    //   dragging = true; // ドラッグ開始
+    //   relX = objX - x;
+    //   relY = objY - y;
+    // }
+    dragging = true; // ドラッグ開始
+    relX = objX - x;
+    relY = objY - y;
+
+  }
+  function onMove(e) {
+    console.log(istouch?'touchmove':'mousemove');
+    // キャンバスの左上端の座標を取得
+    var offsetX = canvas.getBoundingClientRect().left;
+    var offsetY = canvas.getBoundingClientRect().top;
+
+    // マウスが移動した先の座標を取得
+    if (istouch) {
+      x = e.touches[0].pageX - offsetX;
+      y = e.touches[0].pageY - offsetY;
+    } else {
+      x = e.clientX - offsetX;
+      y = e.clientY - offsetY;
+    }
+
+    // ドラッグが開始されていればオブジェクトの座標を更新して再描画
+    if (dragging) {
+      objX = x + relX;
+      objY = y + relY;
+      DrawTextOnImgCanvas(objX, objY);
+    }
+  }
+  function onUp(e){
+    console.log(istouch?'touchend':'mouseup');
+    dragging = false; // ドラッグ終
+  }
+  if (istouch) {
+    canvas.addEventListener('touchstart', onDown, false);
+    canvas.addEventListener('touchmove', onMove, false);
+    canvas.addEventListener('touchend', onUp, false);
+  } else {
+    canvas.addEventListener('mousedown', onDown, false);
+    canvas.addEventListener('mousemove', onMove, false);
+    canvas.addEventListener('mouseup', onUp, false);
+  }
+
+  function DrawTextOnImgCanvas(x, y){
+    console.log('DrawTextOnImgCanvas')
+    var image = $('#template_image')[0];
+    var canvas = $('#cnvs');
+    var cnvsH = 300;
+    var cnvsW = image.naturalWidth*cnvsH/image.naturalHeight;
+    canvas.attr('width', cnvsW);
+    canvas.attr('height', cnvsH);
     var ctx = canvas[0].getContext('2d');
-    // 描画イメージインスタンス化
-    var image = new Image();
-    // File API FileReader Objectでローカルファイルにアクセス
-    var fr = new FileReader();
-    // 画像がロードされた後にcanvasに描画を行う [非同期処理]
-    image.onload = function() {
-      // (3) プレビュー(Cnavas)のサイズを指定
-      var cnvsH = 300;
-      var cnvsW = image.naturalWidth*cnvsH/image.naturalHeight;
-      // (4) Cnavasにサイズアトリビュートを設定する
-      canvas.attr('width', cnvsW);
-      canvas.attr('height', cnvsH);
-      // (5) 描画
-      ctx.drawImage(image, 0, 0, cnvsW, cnvsH);
-    }
-    // ファイル読み込み読み込み完了後に実行 [非同期処理]
-    fr.onload = function(evt) {
-      // 読み込んだ画像をimageのソースに設定
-      image.src = evt.target.result;
-    }
-    // fileを読み込む データはBase64エンコードされる
-    fr.readAsDataURL(file);
-  })
+    ctx.clearRect(0, 0, cnvsW, cnvsH); // キャンバスをクリア
+    ctx.drawImage(image, 0, 0, cnvsW, cnvsH);
+    // (1) HTMLのCanvas要素の取得
+    // テキストボックスの文字を取得する
+    var colla_text = $('#colla-text').val();
+    console.log('colla_text:'+ colla_text);
+    //縦書きか横書きかラヂオボタンのvalueを取得
+    let str = "";
 
-  //canvas内での座標をクリックで取得して、テキストの表示位置に代入したい
-  $('#cnvs').on('click', function(event) {
-    console.log('clicked canvas');
-    var clickX = event.pageX;
-    var clickY = event.pageY;
+    const write_direction = document.getElementsByName("write_direction");
 
-    // 要素の位置を取得
-    var clientRect = this.getBoundingClientRect() ;
-    var positionX = clientRect.left + window.pageXOffset ;
-    var positionY = clientRect.top + window.pageYOffset ;
-    // 要素内におけるクリック位置を計算
-    colla_x = clickX - positionX ;
-    colla_y = clickY - positionY ;
-    //var canvas = $("#cnvs");
-    //var ctx = canvas[0].getContext('2d');
-    //ctx.fillStyle = '#000000';
-    //ctx.clearRect(colla_x, colla_y, 30, 30);
-  });
+    for (let i = 0; i < write_direction.length; i++){
+      if(write_direction[i].checked){
+        str = write_direction[i].value;
+        break;
+      }
+    }
+    var direction = str;
+    //フォントカラーを取得
+    var color = document.getElementById("font-color").value;
+    var fontsize = document.getElementById("font-size").value;
+    // (2) getContext()メソッドで描画機能を有効にする
+    var font_style = "bold " + fontsize + "px 'MS Pゴシック'";
+    ctx.font = font_style;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = "#000000";
+
+    console.log('draw text' + colla_text);
+    if (direction == "horizonal"){
+      //ctx.fillText(colla_text, this.colla_x, this.colla_y);
+      ctx.fillText(colla_text, x, y);
+    }else if (direction == "vertical"){
+      var tategaki = function(ctx, colla_text, x, y) {
+        var textList = colla_text.split('\n');
+        var lineHeight = ctx.measureText("あ").width;
+        textList.forEach(function(elm, i) {
+          Array.prototype.forEach.call(elm, function(ch, j) {
+            ctx.fillText(ch, x-lineHeight*i, y+lineHeight*j);
+          });
+        });
+      };
+      //tategaki(ctx, colla_text, this.colla_x, this.colla_y);
+      tategaki(ctx, colla_text, x, y);
+    }
+  }
+
 
   $('#colla_new').submit(function(){
     var canvas = $("#cnvs");
@@ -86,49 +167,3 @@ function DrawImgOnCanvas(image){
   ctx.drawImage(image, 0, 0, cnvsW, cnvsH);
 }
 
-function OnButtonClick(){
-  // (1) HTMLのCanvas要素の取得
-  var canvas = $("#cnvs");
-  // テキストボックスの文字を取得する
-  var colla_text = $('#colla-text').val();
-  //縦書きか横書きかラヂオボタンのvalueを取得
-  let str = "";
-
-  const write_direction = document.getElementsByName("write_direction");
-
-  for (let i = 0; i < write_direction.length; i++){
-    if(write_direction[i].checked){
-      str = write_direction[i].value;
-      break;
-    }
-  }
-  var direction = str;
-  //フォントカラーを取得
-  var color = document.getElementById("font-color").value;
-  var fontsize = document.getElementById("font-size").value;
-  //var colla_x = colla_x.value;
-  //var colla_y = colla_y.value;
-  // (2) getContext()メソッドで描画機能を有効にする
-  var ctx = canvas[0].getContext('2d');
-  var font_style = "bold " + fontsize + "px 'MS Pゴシック'";
-  ctx.fillStyle = '#00000000';
-  ctx.fillRect(100, 100, 140, 30);
-  ctx.font = font_style;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillStyle = color;
-  if (direction == "horizonal"){
-    ctx.fillText(colla_text, this.colla_x, this.colla_y);
-  }else if (direction == "vertical"){
-    var tategaki = function(ctx, colla_text, x, y) {
-      var textList = colla_text.split('\n');
-      var lineHeight = ctx.measureText("あ").width;
-      textList.forEach(function(elm, i) {
-        Array.prototype.forEach.call(elm, function(ch, j) {
-          ctx.fillText(ch, x-lineHeight*i, y+lineHeight*j);
-        });
-      });
-    };
-    tategaki(ctx, colla_text, this.colla_x, this.colla_y);
-  }
-}
