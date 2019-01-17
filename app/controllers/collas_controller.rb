@@ -3,7 +3,7 @@ class CollasController < ApplicationController
 
   # GET /collas
   # GET /collas.json
-  PER = 3
+  PER = 9
   def index
     @collas = Colla.page(params[:page]).per(PER).search(params[:search])
   end
@@ -36,7 +36,7 @@ class CollasController < ApplicationController
 
     respond_to do |format|
       if @colla.save
-        format.html { redirect_to @colla, notice: 'Colla was successfully created.' }
+        format.html { redirect_to @colla, notice: 'コラ画像が作成されました.' }
         format.json { render :show, status: :created, location: @colla }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class CollasController < ApplicationController
   def update
     respond_to do |format|
       if @colla.update(colla_params)
-        format.html { redirect_to @colla, notice: 'Colla was successfully updated.' }
+        format.html { redirect_to @colla, notice: 'Colla was successfully updated' }
         format.json { render :show, status: :ok, location: @colla }
       else
         format.html { render :edit }

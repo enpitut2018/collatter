@@ -27,7 +27,9 @@
           <% end %>
 
           <div class="field">
-            <%# form.label "元の画像をアップロードしてください" %>
+            <%# <h3>元の画像をアップロードしてください</h3> %>
+            <%# form.label "元の画像をアップロードしてください"
+            <%= form.file_field :image, id: :colla_image %>
           </div>
 
           <%= form.hidden_field :image_data_url, id: :image_data_url %>
@@ -39,12 +41,12 @@
 
             <input type="radio" name="write_direction" value="horizonal" checked>横書き
             <input type="radio" name="write_direction" value="vertical">縦書き
-            <%#<select id="font-color">
+             <select id="font-color">
                 <option value="#000000">黒</option>
                 <option value="#ff0000">赤</option>
                 <option value="#ffff00">黄</option>
                 <option value="#0000ff">青</option>
-              </select>%>
+              </select>
               <select id="font-size">
                 <option value="50">特大</option>
                 <option value="30">大</option>
@@ -52,8 +54,9 @@
                 <option value="10">小</option>
               </select>
 
-            <h3>文字を入れたい場所に移動させてください</h3>
+            <h3>文字を入れたい場所へドラッグしてください</h3>
             <canvas id="cnvs"></canvas><br>
+            <%#<input type="button" value="文字追加" onclick="OnButtonClick();"/><br />%>
           </div>
           <br>
           <div class="field">
