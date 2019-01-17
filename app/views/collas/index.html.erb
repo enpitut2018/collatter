@@ -1,15 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<p>タグで検索</p>
+<%= form_tag(collas_path, :method => 'get' ) do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
 <h1>コラ画像一覧</h1>
 
 <div class="collas">
 <% @collas.each do |colla| %>
-<div>
-  <%= link_to colla, target: "_brank" do %>
-    <%= image_tag colla.image.to_s %>
-    <br><%= colla.tag_txt %>
-  <% end %>
-  <br><%= link_to '削除', colla, method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
+  <div>
+    <%= link_to colla, target: "_brank" do %>
+      <%= image_tag colla.image.to_s %>
+      <br><%= colla.tag_txt %>
+    <% end %>
+    <br><%= link_to '削除', colla, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
 <% end %>
+
+</div>
+<div class="pageing">
+  <%= paginate @collas %>
 </div>

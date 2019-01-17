@@ -3,8 +3,9 @@ class CollasController < ApplicationController
 
   # GET /collas
   # GET /collas.json
+  PER = 3
   def index
-    @collas = Colla.all_by_popularity
+    @collas = Colla.page(params[:page]).per(PER).search(params[:search])
   end
 
   # GET /collas/1

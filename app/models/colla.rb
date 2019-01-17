@@ -14,4 +14,12 @@ class Colla < ApplicationRecord
     self.tweet_count += 1
     self.save
   end
+
+  def self.search(search) #ここでのself.はCollas.を意味する
+    if search
+      where(['tag_txt LIKE ?', "%#{search}%"]) #検索とtagの部分一致を表示。User.は省略
+    else
+      all #全て表示。User.は省略
+    end
+  end
 end
