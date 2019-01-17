@@ -24,15 +24,22 @@ $(document).on('turbolinks:load', function() {
 
   DrawTextOnImgCanvas(objX, objY);
 
-  canvas.addEventListener('mousedown', function(e){
-    console.log('mousedown');
+  var istouch = window.ontouchstart===null;
+
+  function onDown(e) {
+    console.log(istouch?'touchstart':'mousedown');
     // キャンバスの左上端の座標を取得
     var offsetX = canvas.getBoundingClientRect().left;
     var offsetY = canvas.getBoundingClientRect().top;
 
     // マウスが押された座標を取得
-    x = e.clientX - offsetX;
-    y = e.clientY - offsetY;
+    if (istouch) {
+      x = e.touches[0].pageX - offsetX;
+      y = e.touches[0].pageY - offsetY;
+    } else {
+      x = e.clientX - offsetX;
+      y = e.clientY - offsetY;
+    }
 
     // オブジェクト上の座標かどうかを判定
     // if (objX < x && (objX + objWidth) > x && objY < y && (objY + objHeight) > y) {
@@ -43,16 +50,22 @@ $(document).on('turbolinks:load', function() {
     dragging = true; // ドラッグ開始
     relX = objX - x;
     relY = objY - y;
-  }, false);
-  canvas.addEventListener('mousemove', function(e){
-    console.log('mousemove');
+
+  }
+  function onMove(e) {
+    console.log(istouch?'touchmove':'mousemove');
     // キャンバスの左上端の座標を取得
     var offsetX = canvas.getBoundingClientRect().left;
     var offsetY = canvas.getBoundingClientRect().top;
 
     // マウスが移動した先の座標を取得
-    x = e.clientX - offsetX;
-    y = e.clientY - offsetY;
+    if (istouch) {
+      x = e.touches[0].pageX - offsetX;
+      y = e.touches[0].pageY - offsetY;
+    } else {
+      x = e.clientX - offsetX;
+      y = e.clientY - offsetY;
+    }
 
     // ドラッグが開始されていればオブジェクトの座標を更新して再描画
     if (dragging) {
@@ -60,12 +73,20 @@ $(document).on('turbolinks:load', function() {
       objY = y + relY;
       DrawTextOnImgCanvas(objX, objY);
     }
-
-  }, false);
-  canvas.addEventListener('mouseup', function(e){
-    console.log('mouseup');
+  }
+  function onUp(e){
+    console.log(istouch?'touchend':'mouseup');
     dragging = false; // ドラッグ終
-  }, false);
+  }
+  if (istouch) {
+    canvas.addEventListener('touchstart', onDown, false);
+    canvas.addEventListener('touchmove', onMove, false);
+    canvas.addEventListener('touchend', onUp, false);
+  } else {
+    canvas.addEventListener('mousedown', onDown, false);
+    canvas.addEventListener('mousemove', onMove, false);
+    canvas.addEventListener('mouseup', onUp, false);
+  }
 
   function DrawTextOnImgCanvas(x, y){
     console.log('DrawTextOnImgCanvas')
