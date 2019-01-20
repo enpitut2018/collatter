@@ -10,7 +10,7 @@
 * カンバンのURL
 ## メンバー
 - [潘秋実/qqhann](https://github.com/qqhann)
-- [西川浩平/kohei0309](https://github.com/kohei0309)
+- [西川浩平/kohei0309](https://github.com/wakameog)
 - [松浦洋太郎/yootr](https://github.com/yootr)
 - [鄭爽/So-shuang](https://github.com/So-shuang)
 - [糸井晴夏/HaruKa-Itoi](https://github.com/HaruKa-Itoi)
