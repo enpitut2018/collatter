@@ -27,8 +27,8 @@
           <% end %>
 
           <div class="field">
-            <h3>元の画像をアップロードしてください</h3>
-            <%# form.label "元の画像をアップロードしてください" %>
+            <%# <h3>元の画像をアップロードしてください</h3> %>
+            <%# form.label "元の画像をアップロードしてください"
             <%= form.file_field :image, id: :colla_image %>
           </div>
 
@@ -54,9 +54,9 @@
                 <option value="10">小</option>
               </select>
 
-            <h3>文字を入れたい場所をクリックしてください</h3>
+            <h3>文字を入れたい場所へドラッグしてください</h3>
             <canvas id="cnvs"></canvas><br>
-            <input type="button" value="文字追加" onclick="OnButtonClick();"/><br />
+            <%#<input type="button" value="文字追加" onclick="OnButtonClick();"/><br />%>
           </div>
           <br>
           <div class="field">

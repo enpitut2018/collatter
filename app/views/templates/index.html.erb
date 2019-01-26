@@ -1,16 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+
 <h2>テンプレート検索</h2>
 <%= form_tag(templates_path, :method => 'get' ) do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', :name => nil %>
 <% end %>
-
+<br>
 <h2>
-  <%= link_to '新たにテンプレートを投稿する', new_template_path %>
-</h2>
-
-<h2>テンプレート一覧</h2>
+<%= link_to 'テンプレートを投稿する', new_template_path %></h2><br>
+<h1>テンプレート一覧</h1>
 <div class="collas">
 <% @templates.each do |template| %>
 <div>
@@ -18,7 +17,7 @@
     <%= image_tag template.image.to_s %>
     <br><%= template.tag_txt %>
   <% end %>
-  <br><%= link_to '削除', template, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%#<br><%= link_to '削除', template, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
 <% end %>
 </div>
