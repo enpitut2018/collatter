@@ -25,3 +25,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+  database: collatter18db
+  username: collatter18user
+  #password:
+  host: localhost
