@@ -12,6 +12,7 @@ gem 'twitter'
 gem 'dotenv-rails' #環境変数を簡単に利用できるgem
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
+gem 'google-analytics-rails'
 gem 'awesome_rails_console'
 gem 'pry-byebug', group: :development
 gem 'kaminari', '~> 0.17.0'
