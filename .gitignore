@@ -27,3 +27,4 @@ public/uploads/
 public/assets/
 
 .DS_Store
+yarn.lock  # productionでrailsするためにbrewで入れた．多分git管理いらない
